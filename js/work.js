@@ -2,6 +2,8 @@ import {
   loadProjects,
   loadSite,
   hydrateChrome,
+  hydrateSeo,
+  hydratePersonSchema,
   projectUrl,
   escapeHtml,
   sortProjects,
@@ -43,7 +45,7 @@ function setView(view, { persist = true } = {}) {
 function positionPreview(event) {
   if (!preview || !activePreviewProject) return;
   const box = preview.getBoundingClientRect();
-  const gap = 18;
+  const gap = 14;
   const maxLeft = window.innerWidth - box.width - gap;
   const maxTop = window.innerHeight - box.height - gap;
   const left = Math.min(Math.max(gap, event.clientX + gap), maxLeft);
@@ -69,26 +71,28 @@ function hidePreview() {
 try {
   const [projects, site] = await Promise.all([loadProjects(), loadSite()]);
   hydrateChrome(site);
-  document.title = `Work — ${site.name || 'Portfolio'}`;
+  hydrateSeo(site, {
+    title: `Work — ${site.name || 'Portfolio'}`,
+    description: `Selected personal and professional projects by ${site.name || 'the portfolio owner'}.`,
+    path: 'work.html',
+    image: site.seoImage,
+    type: 'website'
+  });
+  hydratePersonSchema(site);
 
   const sorted = sortProjects(projects);
 
   grid.innerHTML = sorted.map(project => `
     <a class="work-grid-card" href="${projectUrl(project)}">
       <div class="work-grid-card__media">
-        <img src="${escapeHtml(project.thumbnail)}" alt="${escapeHtml(project.title)}" loading="lazy">
+        <img src="${escapeHtml(project.thumbnail)}" alt="${escapeHtml(project.thumbnailAlt || project.title)}" loading="lazy">
       </div>
       <div class="work-grid-card__title"><span>${escapeHtml(project.title)}</span></div>
     </a>
   `).join('');
 
   list.innerHTML = sorted.map((project, index) => `
-    <a
-      class="work-list__row"
-      href="${projectUrl(project)}"
-      data-project-index="${index}"
-      role="row"
-    >
+    <a class="work-list__row" href="${projectUrl(project)}" data-project-index="${index}" role="row">
       <span role="cell">${escapeHtml(project.title)}</span>
       <span role="cell">${escapeHtml(project.format || '—')}</span>
       <span role="cell">${escapeHtml(project.brand || project.client || '—')}</span>

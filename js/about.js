@@ -1,11 +1,18 @@
-import { loadSite, hydrateChrome, escapeHtml, revealPage } from './site.js';
+import { loadSite, hydrateChrome, hydrateSeo, hydratePersonSchema, escapeHtml, revealPage } from './site.js';
 
 const page = document.querySelector('[data-about]');
 
 try {
   const site = await loadSite();
   hydrateChrome(site);
-  document.title = `About — ${site.name || 'Portfolio'}`;
+  hydrateSeo(site, {
+    title: `About — ${site.name || 'Portfolio'}`,
+    description: site.aboutSeoDescription || site.about || site.intro || `About ${site.name || 'the portfolio owner'}.`,
+    path: 'about.html',
+    image: site.seoImage,
+    type: 'profile'
+  });
+  hydratePersonSchema(site);
 
   const resume = Array.isArray(site.resume) ? site.resume : [];
   const resumeMarkup = resume.map(item => `
@@ -21,9 +28,7 @@ try {
       ${site.intro ? `<p>${escapeHtml(site.intro)}</p>` : ''}
       ${site.location ? `<p class="muted">${escapeHtml(site.location)}</p>` : ''}
     </section>
-
     ${site.about ? `<section><h2>About</h2><p>${escapeHtml(site.about)}</p></section>` : ''}
-
     ${resumeMarkup ? `<section><h2>Experience</h2><div class="resume-list">${resumeMarkup}</div></section>` : ''}
   `;
 

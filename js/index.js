@@ -2,6 +2,8 @@ import {
   loadProjects,
   loadSite,
   hydrateChrome,
+  hydrateSeo,
+  hydratePersonSchema,
   projectUrl,
   escapeHtml,
   revealPage
@@ -12,7 +14,14 @@ const grid = document.querySelector('[data-project-grid]');
 try {
   const [projects, site] = await Promise.all([loadProjects(), loadSite()]);
   hydrateChrome(site);
-  document.title = site.name || 'Portfolio';
+  hydrateSeo(site, {
+    title: site.seoTitle || site.name || 'Portfolio',
+    description: site.seoDescription || site.intro || 'Selected personal and professional projects.',
+    path: 'index.html',
+    image: site.seoImage || projects.find(project => project.featured)?.thumbnail,
+    type: 'website'
+  });
+  hydratePersonSchema(site);
 
   const featured = projects
     .filter(project => project.featured)
@@ -20,11 +29,10 @@ try {
     .slice(0, 4);
 
   grid.innerHTML = featured.map(project => `
-    <a class="project-card" href="${projectUrl(project)}">
+    <a class="project-card" href="${projectUrl(project)}" aria-label="${escapeHtml(project.title)}">
       <div class="project-card__media">
-        <img src="${escapeHtml(project.thumbnail)}" alt="${escapeHtml(project.title)}" loading="eager">
+        <img src="${escapeHtml(project.thumbnail)}" alt="${escapeHtml(project.thumbnailAlt || project.title)}" loading="eager" fetchpriority="high">
       </div>
-      <div class="project-card__meta"><span>${escapeHtml(project.title)}</span></div>
     </a>
   `).join('');
 

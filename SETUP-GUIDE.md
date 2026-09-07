@@ -6,8 +6,8 @@ This site is plain HTML, CSS and JavaScript. There is no build process. Project 
 
 Copy your two `.ttf` files into `assets/fonts/` and make sure they are named exactly:
 
-- `PixelArial11-Regular.ttf`
-- `PixelArial11-Bold.ttf`
+- `PixelArial11-Regular.TTF`
+- `PixelArial11-Bold.TTF`
 
 The site uses Regular as its default weight and Bold for active navigation, headings, Work table headings and `loading...`.
 
@@ -102,3 +102,65 @@ Open **Site / About / Connect** in Pages CMS to edit your name, story, location,
 ## 9. Updating the code later
 
 For visual/code changes, replace the relevant files in GitHub and commit them. For normal project/content updates, use Pages CMS instead.
+
+---
+
+## NEW DESIGN STRUCTURE
+
+The desktop website is intentionally a fixed **550px-wide visual object** centered in the browser.
+
+### Home
+Home displays only the four projects marked `Show on homepage` in Pages CMS. They appear as four adjacent image crops with **no text and zero gap**. `Homepage position` 1–4 controls the left-to-right order.
+
+### Navigation
+The menu stays directly underneath the content box:
+
+`Home   Work   Random   About   Connect`
+
+Work also shows `Display: List / Grid`. The copyright / hidden site-credit trigger remains on the right.
+
+### Content scrolling
+Work, Project, About and Connect use a contained scrolling area. This is intentional: the 550px site object and its navigation stay visually stable while longer content scrolls inside it.
+
+---
+
+## SEO SETUP AFTER THE SITE IS LIVE
+
+The code already handles titles, meta descriptions, Open Graph, Twitter cards, canonical tags and structured data. There is one important value you should add after GitHub Pages gives you your public URL.
+
+In Pages CMS open:
+
+`Site / About / Connect → Live site URL`
+
+Enter the complete public URL, for example:
+
+`https://YOURNAME.github.io/virginie-portfolio`
+
+or your final custom domain:
+
+`https://yourdomain.com`
+
+Also complete:
+
+- Homepage SEO title
+- Homepage SEO description
+- Default social share image
+- About page SEO description
+
+Each project has optional:
+
+- Thumbnail alt text
+- SEO title
+- SEO description
+- SEO / social share image
+
+If you leave the project SEO fields empty, the site automatically falls back to the project title, description and thumbnail.
+
+### Sitemap
+Once `Live site URL` is filled in, open Terminal in the website folder and run:
+
+```bash
+python3 tools/build_sitemap.py
+```
+
+This generates `sitemap.xml` and adds its location to `robots.txt`. Upload / commit both files to GitHub.

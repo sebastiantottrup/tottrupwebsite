@@ -23,7 +23,11 @@
         }
       ],
       "format": "Images / Video",
-      "brand": "Pas Normal Studios"
+      "brand": "Pas Normal Studios",
+      "thumbnailAlt": "Project One",
+      "seoTitle": "",
+      "seoDescription": "",
+      "seoImage": ""
     },
     {
       "slug": "project-02",
@@ -43,7 +47,11 @@
         }
       ],
       "format": "Product",
-      "brand": "Pas Normal Studios"
+      "brand": "Pas Normal Studios",
+      "thumbnailAlt": "Project Two",
+      "seoTitle": "",
+      "seoDescription": "",
+      "seoImage": ""
     },
     {
       "slug": "project-03",
@@ -63,7 +71,11 @@
         }
       ],
       "format": "Video",
-      "brand": "Personal"
+      "brand": "Personal",
+      "thumbnailAlt": "Project Three",
+      "seoTitle": "",
+      "seoDescription": "",
+      "seoImage": ""
     },
     {
       "slug": "project-04",
@@ -83,7 +95,11 @@
         }
       ],
       "format": "Design",
-      "brand": "Polymer Workshop"
+      "brand": "Polymer Workshop",
+      "thumbnailAlt": "Project Four",
+      "seoTitle": "",
+      "seoDescription": "",
+      "seoImage": ""
     },
     {
       "slug": "project-05",
@@ -102,7 +118,11 @@
         }
       ],
       "format": "Images / Video",
-      "brand": "Polymer Workshop"
+      "brand": "Polymer Workshop",
+      "thumbnailAlt": "Project Five",
+      "seoTitle": "",
+      "seoDescription": "",
+      "seoImage": ""
     },
     {
       "slug": "project-06",
@@ -121,7 +141,11 @@
         }
       ],
       "format": "Product",
-      "brand": "Brand / Client"
+      "brand": "Brand / Client",
+      "thumbnailAlt": "Project Six",
+      "seoTitle": "",
+      "seoDescription": "",
+      "seoImage": ""
     },
     {
       "slug": "project-07",
@@ -140,7 +164,11 @@
         }
       ],
       "format": "Video",
-      "brand": "Personal"
+      "brand": "Personal",
+      "thumbnailAlt": "Project Seven",
+      "seoTitle": "",
+      "seoDescription": "",
+      "seoImage": ""
     },
     {
       "slug": "project-08",
@@ -159,7 +187,11 @@
         }
       ],
       "format": "Design",
-      "brand": "Brand / Client"
+      "brand": "Brand / Client",
+      "thumbnailAlt": "Project Eight",
+      "seoTitle": "",
+      "seoDescription": "",
+      "seoImage": ""
     },
     {
       "slug": "project-09",
@@ -178,7 +210,11 @@
         }
       ],
       "format": "Images / Video",
-      "brand": "Personal"
+      "brand": "Personal",
+      "thumbnailAlt": "Project Nine",
+      "seoTitle": "",
+      "seoDescription": "",
+      "seoImage": ""
     }
   ]
 }

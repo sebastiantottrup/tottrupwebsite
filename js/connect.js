@@ -1,4 +1,4 @@
-import { loadSite, hydrateChrome, escapeHtml, revealPage } from './site.js';
+import { loadSite, hydrateChrome, hydrateSeo, hydratePersonSchema, escapeHtml, revealPage } from './site.js';
 
 const page = document.querySelector('[data-connect]');
 
@@ -10,7 +10,14 @@ function normalUrl(value = '') {
 try {
   const site = await loadSite();
   hydrateChrome(site);
-  document.title = `Connect — ${site.name || 'Portfolio'}`;
+  hydrateSeo(site, {
+    title: `Connect — ${site.name || 'Portfolio'}`,
+    description: `Contact and social links for ${site.name || 'the portfolio owner'}.`,
+    path: 'connect.html',
+    image: site.seoImage,
+    type: 'profile'
+  });
+  hydratePersonSchema(site);
 
   const links = [];
   if (site.email) links.push({ label: 'Email', value: site.email, href: `mailto:${site.email}`, external: false });

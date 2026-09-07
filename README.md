@@ -25,8 +25,8 @@ Ultra-simple static portfolio built with HTML, CSS and vanilla JavaScript, with 
 
 Add the free-to-use Pixel Arial 11 files to `assets/fonts/` with these exact names:
 
-- `PixelArial11-Regular.ttf`
-- `PixelArial11-Bold.ttf`
+- `PixelArial11-Regular.TTF`
+- `PixelArial11-Bold.TTF`
 
 The CSS is already wired to both files.
 
@@ -49,3 +49,34 @@ and visit `http://localhost:8080`.
 ## Publishing + CMS
 
 See `SETUP-GUIDE.md` for a complete GitHub Pages + Pages CMS walkthrough.
+
+## v5 layout notes
+
+- Desktop site object is capped at **550px wide** and centered in the browser.
+- Navigation sits directly underneath the content object and does not scroll with the content box.
+- Home contains **exactly four featured project images in one continuous strip**: no titles, captions, or gaps.
+- Work retains List / Grid views inside the 550px content area.
+- Project, About and Connect pages use an internally scrollable content area so the navigation stays in a consistent location.
+- Pixel Arial 11 Regular (400) and Bold (700) are the only public-site fonts.
+
+## SEO
+
+The frontend now includes:
+
+- unique page titles and meta descriptions
+- canonical URL support once `siteUrl` is entered in the CMS
+- Open Graph and Twitter metadata
+- `Person` structured data
+- `CreativeWork` structured data for every project
+- project alt-text fields
+- per-project SEO title, description, and social image fields
+- `robots.txt`
+- a sitemap generator at `tools/build_sitemap.py`
+
+After your real website URL is known, set **Site / About / Connect → Live site URL** in Pages CMS (for example `https://virginiepalermo.com`). Then run:
+
+```bash
+python3 tools/build_sitemap.py
+```
+
+Commit the generated `sitemap.xml` and updated `robots.txt` to GitHub. Re-run this after adding or removing projects if you want the sitemap to stay fully current.

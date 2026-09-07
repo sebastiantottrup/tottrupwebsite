@@ -152,6 +152,130 @@ export function hydrateChrome(site) {
 
 export const hydrateHeader = hydrateChrome;
 
+function absoluteUrl(site, value = '') {
+  if (!value) return '';
+  try {
+    if (/^https?:\/\//i.test(value)) return new URL(value).href;
+    if (site.siteUrl) return new URL(value, `${site.siteUrl.replace(/\/$/, '')}/`).href;
+  } catch (_) {}
+  return '';
+}
+
+function ensureMeta(selector, attributes) {
+  let element = document.head.querySelector(selector);
+  if (!element) {
+    element = document.createElement('meta');
+    document.head.appendChild(element);
+  }
+  Object.entries(attributes).forEach(([key, value]) => element.setAttribute(key, value));
+  return element;
+}
+
+function ensureLink(rel) {
+  let element = document.head.querySelector(`link[rel="${rel}"]`);
+  if (!element) {
+    element = document.createElement('link');
+    element.rel = rel;
+    document.head.appendChild(element);
+  }
+  return element;
+}
+
+export function hydrateSeo(site, {
+  title,
+  description,
+  path = '',
+  image = '',
+  type = 'website',
+  robots = 'index,follow,max-image-preview:large'
+} = {}) {
+  const siteName = site.name || 'Portfolio';
+  const resolvedTitle = title || siteName;
+  const resolvedDescription = description || site.seoDescription || site.intro || '';
+  const canonical = site.siteUrl
+    ? absoluteUrl(site, path || `${window.location.pathname}${window.location.search}`)
+    : '';
+  const resolvedImage = absoluteUrl(site, image || site.seoImage || '');
+
+  document.title = resolvedTitle;
+  ensureMeta('meta[name="description"]', { name: 'description', content: resolvedDescription });
+  ensureMeta('meta[name="robots"]', { name: 'robots', content: robots });
+  ensureMeta('meta[property="og:site_name"]', { property: 'og:site_name', content: siteName });
+  ensureMeta('meta[property="og:title"]', { property: 'og:title', content: resolvedTitle });
+  ensureMeta('meta[property="og:description"]', { property: 'og:description', content: resolvedDescription });
+  ensureMeta('meta[property="og:type"]', { property: 'og:type', content: type });
+  ensureMeta('meta[name="twitter:card"]', { name: 'twitter:card', content: resolvedImage ? 'summary_large_image' : 'summary' });
+  ensureMeta('meta[name="twitter:title"]', { name: 'twitter:title', content: resolvedTitle });
+  ensureMeta('meta[name="twitter:description"]', { name: 'twitter:description', content: resolvedDescription });
+
+  if (canonical) {
+    ensureLink('canonical').href = canonical;
+    ensureMeta('meta[property="og:url"]', { property: 'og:url', content: canonical });
+  }
+  if (resolvedImage) {
+    ensureMeta('meta[property="og:image"]', { property: 'og:image', content: resolvedImage });
+    ensureMeta('meta[name="twitter:image"]', { name: 'twitter:image', content: resolvedImage });
+  }
+}
+
+export function injectJsonLd(id, data) {
+  let script = document.getElementById(id);
+  if (!script) {
+    script = document.createElement('script');
+    script.id = id;
+    script.type = 'application/ld+json';
+    document.head.appendChild(script);
+  }
+  script.textContent = JSON.stringify(data);
+}
+
+export function hydratePersonSchema(site) {
+  const sameAs = [];
+  if (site.instagram) sameAs.push(`https://instagram.com/${String(site.instagram).replace(/^@/, '')}`);
+  if (site.strava) sameAs.push(site.strava);
+  if (site.linkedin) sameAs.push(site.linkedin);
+  if (site.website) sameAs.push(site.website);
+
+  const data = {
+    '@context': 'https://schema.org',
+    '@type': 'Person',
+    name: site.name || 'Portfolio owner',
+    description: site.seoDescription || site.intro || undefined,
+    url: site.siteUrl || undefined,
+    email: site.email ? `mailto:${site.email}` : undefined,
+    sameAs: sameAs.length ? sameAs : undefined,
+    homeLocation: site.location ? {
+      '@type': 'Place',
+      name: site.location
+    } : undefined
+  };
+
+  Object.keys(data).forEach(key => data[key] === undefined && delete data[key]);
+  injectJsonLd('person-schema', data);
+}
+
+export function hydrateProjectSchema(site, project) {
+  const canonical = site.siteUrl ? absoluteUrl(site, projectUrl(project)) : undefined;
+  const image = absoluteUrl(site, project.seoImage || project.thumbnail || '');
+  const data = {
+    '@context': 'https://schema.org',
+    '@type': 'CreativeWork',
+    name: project.title,
+    description: project.seoDescription || project.description || undefined,
+    dateCreated: project.year ? String(project.year) : undefined,
+    creator: {
+      '@type': 'Person',
+      name: site.name || 'Portfolio owner'
+    },
+    image: image || undefined,
+    url: canonical,
+    genre: project.format || undefined,
+    about: project.brand || project.client || undefined
+  };
+  Object.keys(data).forEach(key => data[key] === undefined && delete data[key]);
+  injectJsonLd('project-schema', data);
+}
+
 export function projectUrl(project) {
   return `project.html?slug=${encodeURIComponent(project.slug)}`;
 }

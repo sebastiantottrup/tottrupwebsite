@@ -1,11 +1,9 @@
 PIXEL ARIAL 11 FONT FILES
 
-Place the two font files in this folder with these exact names:
+This site is configured for these exact filenames:
 
-  PixelArial11-Regular.ttf
-  PixelArial11-Bold.ttf
+  PixelArial11-Regular.TTF
+  PixelArial11-Bold.TTF
 
-The public site is already configured to use Regular (400) and Bold (700).
-Regular is the default. Bold is used for active navigation, headings, Work column headers and the loading label.
-
-If your downloaded files have different names, either rename them to the names above or update the two url(...) paths at the top of css/styles.css.
+Place both original font files in this folder before publishing.
+Regular is used as font-weight 400 and Bold as font-weight 700.

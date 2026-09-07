@@ -1,4 +1,14 @@
-import { loadProjects, loadSite, hydrateHeader, escapeHtml, mediaKind, revealPage } from './site.js';
+import {
+  loadProjects,
+  loadSite,
+  hydrateHeader,
+  hydrateSeo,
+  hydratePersonSchema,
+  hydrateProjectSchema,
+  escapeHtml,
+  mediaKind,
+  revealPage
+} from './site.js';
 
 const params = new URLSearchParams(window.location.search);
 const slug = params.get('slug');
@@ -31,11 +41,19 @@ try {
   const project = projects.find(item => item.slug === slug);
   if (!project) throw new Error('Project not found.');
 
-  document.title = `${project.title} — ${site.name || 'Portfolio'}`;
+  hydrateSeo(site, {
+    title: project.seoTitle || `${project.title} — ${site.name || 'Portfolio'}`,
+    description: project.seoDescription || project.description || `${project.title}, a project by ${site.name || 'the portfolio owner'}.`,
+    path: `project.html?slug=${encodeURIComponent(project.slug)}`,
+    image: project.seoImage || project.thumbnail,
+    type: 'article'
+  });
+  hydratePersonSchema(site);
+  hydrateProjectSchema(site, project);
 
   const media = Array.isArray(project.media) && project.media.length
     ? project.media
-    : [{ type: 'image', src: project.thumbnail, alt: project.title }];
+    : [{ type: 'image', src: project.thumbnail, alt: project.thumbnailAlt || project.title }];
 
   let activeIndex = 0;
 
