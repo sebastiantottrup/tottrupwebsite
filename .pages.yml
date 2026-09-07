@@ -1,0 +1,181 @@
+media:
+  input: assets/uploads
+  output: /assets/uploads
+  rename: safe
+
+settings:
+  hide: true
+  commit:
+    templates:
+      update: "content: update {path}"
+      create: "content: create {path}"
+      delete: "content: delete {path}"
+
+content:
+  - name: projects
+    label: Projects
+    type: file
+    path: content/projects.json
+    format: json
+    operations:
+      delete: false
+    fields:
+      - name: projects
+        label: Projects
+        type: object
+        list:
+          collapsible:
+            collapsed: true
+            summary: "{fields.year} : {fields.title}"
+        fields:
+          - name: slug
+            label: Slug
+            type: string
+            required: true
+            description: "Lowercase URL name, e.g. polymer-workshop. Do not change after publishing unless you want the URL to change."
+            pattern:
+              regex: "^[a-z0-9-]+$"
+              message: "Use lowercase letters, numbers and hyphens only."
+          - name: year
+            label: Year
+            type: number
+            required: true
+          - name: title
+            label: Title
+            type: string
+            required: true
+          - name: featured
+            label: Show on homepage
+            type: boolean
+            description: "The homepage shows a maximum of four selected projects."
+          - name: featuredOrder
+            label: Homepage position
+            type: number
+            description: "Use 1–4. Only the first four featured projects are shown."
+          - name: thumbnail
+            label: Project thumbnail
+            type: image
+            required: true
+            description: "Used on Home, Work Grid and the 1:1 Work List hover preview."
+          - name: format
+            label: Format
+            type: string
+            description: "Shown in the Work list, e.g. Images / Video, Product, Design."
+          - name: brand
+            label: Brand
+            type: string
+            description: "Shown in the Work list, e.g. Pas Normal Studios, Polymer Workshop, Personal."
+          - name: client
+            label: Client
+            type: string
+          - name: role
+            label: Role
+            type: string
+          - name: description
+            label: Description
+            type: text
+          - name: media
+            label: Project gallery
+            type: block
+            list:
+              collapsible:
+                collapsed: true
+                summary: "Media {index}"
+            blockKey: type
+            blocks:
+              - name: image
+                label: Image
+                fields:
+                  - name: src
+                    label: Image
+                    type: image
+                    required: true
+                  - name: alt
+                    label: Alt text
+                    type: string
+              - name: video
+                label: Video
+                fields:
+                  - name: src
+                    label: Video file
+                    type: file
+                    required: true
+                    options:
+                      categories: [video]
+                  - name: poster
+                    label: Video poster image
+                    type: image
+                  - name: alt
+                    label: Label / alt text
+                    type: string
+
+  - name: site
+    label: Site / About / Connect
+    type: file
+    path: content/site.json
+    format: json
+    operations:
+      delete: false
+    fields:
+      - name: name
+        label: Name
+        type: string
+        required: true
+      - name: copyrightStartYear
+        label: Copyright start year
+        type: number
+        description: "Footer displays Name © start year–current year. Use the current year for a single year."
+      - name: siteCredit
+        label: Hidden site credit
+        type: string
+        description: "Easter egg revealed when the footer copyright is clicked."
+      - name: intro
+        label: About intro line
+        type: string
+      - name: about
+        label: Story / background
+        type: text
+      - name: location
+        label: Location
+        type: string
+      - name: resume
+        label: Experience
+        type: object
+        list:
+          collapsible:
+            collapsed: true
+            summary: "{fields.period} : {fields.role}"
+        fields:
+          - name: period
+            label: Period
+            type: string
+          - name: role
+            label: Role
+            type: string
+          - name: company
+            label: Company
+            type: string
+      - name: email
+        label: Email
+        type: string
+      - name: instagram
+        label: Instagram handle
+        type: string
+      - name: strava
+        label: Strava URL
+        type: string
+      - name: stravaLabel
+        label: Strava display name
+        type: string
+      - name: linkedin
+        label: LinkedIn URL
+        type: string
+      - name: linkedinLabel
+        label: LinkedIn display name
+        type: string
+      - name: website
+        label: Website URL
+        type: string
+      - name: websiteLabel
+        label: Website display name
+        type: string
