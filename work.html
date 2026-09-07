@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="en" class="no-js">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Personal and professional work archive.">
+  <title>Work — Portfolio</title>
+  <script>document.documentElement.classList.replace('no-js', 'js');</script>
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body data-page-state="loading">
+  <div class="site-loader" aria-live="polite" aria-label="Loading">
+    <span class="site-loader__label">loading<span class="loader-dot">.</span><span class="loader-dot">.</span><span class="loader-dot">.</span></span>
+  </div>
+
+  <div class="site-shell">
+    <main class="work-page">
+      <section class="work-view" data-work-grid-view hidden>
+        <div class="work-grid" data-work-grid aria-label="Projects in grid view"></div>
+      </section>
+
+      <section class="work-view" data-work-list-view>
+        <div class="work-list-wrap">
+          <div class="work-list" role="table" aria-label="Projects in list view">
+            <div class="work-list__header" role="row">
+              <span role="columnheader">Project Name</span>
+              <span role="columnheader">Format</span>
+              <span role="columnheader">Brand</span>
+              <span role="columnheader">Year</span>
+            </div>
+            <div data-work-list></div>
+          </div>
+        </div>
+      </section>
+
+      <aside class="work-hover-preview" aria-hidden="true" data-work-preview>
+        <img src="" alt="" data-work-preview-image>
+      </aside>
+    </main>
+
+    <footer class="site-footer">
+      <nav class="footer-nav" aria-label="Primary">
+        <a href="index.html">Home</a>
+        <a href="work.html" aria-current="page">Work</a>
+        <a href="random.html">Random</a>
+        <a href="about.html">About</a>
+        <a href="connect.html">Connect</a>
+      </nav>
+
+      <div class="display-switch" aria-label="Work display">
+        <button type="button" data-display="list">List</button>
+        <span>/</span>
+        <button type="button" data-display="grid">Grid</button>
+      </div>
+
+      <div class="footer-copyright" data-copyright>YOUR NAME © 2026</div>
+    </footer>
+  </div>
+
+  <script type="module" src="js/work.js"></script>
+</body>
+</html>

@@ -1,0 +1,184 @@
+{
+  "projects": [
+    {
+      "slug": "project-01",
+      "year": 2026,
+      "title": "Project One",
+      "featured": true,
+      "featuredOrder": 1,
+      "thumbnail": "assets/images/project-01.svg",
+      "client": "Client / Self-initiated",
+      "role": "Creative Direction / Design",
+      "description": "A concise one or two sentence description of the project.",
+      "media": [
+        {
+          "type": "image",
+          "src": "assets/images/project-01.svg",
+          "alt": "Project One"
+        },
+        {
+          "type": "image",
+          "src": "assets/images/project-02.svg",
+          "alt": "Project One detail"
+        }
+      ],
+      "format": "Images / Video",
+      "brand": "Pas Normal Studios"
+    },
+    {
+      "slug": "project-02",
+      "year": 2026,
+      "title": "Project Two",
+      "featured": true,
+      "featuredOrder": 2,
+      "thumbnail": "assets/images/project-02.svg",
+      "client": "Client",
+      "role": "Design",
+      "description": "Project description.",
+      "media": [
+        {
+          "type": "image",
+          "src": "assets/images/project-02.svg",
+          "alt": "Project Two"
+        }
+      ],
+      "format": "Product",
+      "brand": "Pas Normal Studios"
+    },
+    {
+      "slug": "project-03",
+      "year": 2025,
+      "title": "Project Three",
+      "featured": true,
+      "featuredOrder": 3,
+      "thumbnail": "assets/images/project-03.svg",
+      "client": "Client",
+      "role": "Photography",
+      "description": "Project description.",
+      "media": [
+        {
+          "type": "image",
+          "src": "assets/images/project-03.svg",
+          "alt": "Project Three"
+        }
+      ],
+      "format": "Video",
+      "brand": "Personal"
+    },
+    {
+      "slug": "project-04",
+      "year": 2025,
+      "title": "Project Four",
+      "featured": true,
+      "featuredOrder": 4,
+      "thumbnail": "assets/images/project-04.svg",
+      "client": "Client",
+      "role": "Art Direction",
+      "description": "Project description.",
+      "media": [
+        {
+          "type": "image",
+          "src": "assets/images/project-04.svg",
+          "alt": "Project Four"
+        }
+      ],
+      "format": "Design",
+      "brand": "Polymer Workshop"
+    },
+    {
+      "slug": "project-05",
+      "year": 2025,
+      "title": "Project Five",
+      "featured": false,
+      "thumbnail": "assets/images/project-05.svg",
+      "client": "Client",
+      "role": "Campaign",
+      "description": "Project description.",
+      "media": [
+        {
+          "type": "image",
+          "src": "assets/images/project-05.svg",
+          "alt": "Project Five"
+        }
+      ],
+      "format": "Images / Video",
+      "brand": "Polymer Workshop"
+    },
+    {
+      "slug": "project-06",
+      "year": 2024,
+      "title": "Project Six",
+      "featured": false,
+      "thumbnail": "assets/images/project-06.svg",
+      "client": "Client",
+      "role": "Design",
+      "description": "Project description.",
+      "media": [
+        {
+          "type": "image",
+          "src": "assets/images/project-06.svg",
+          "alt": "Project Six"
+        }
+      ],
+      "format": "Product",
+      "brand": "Brand / Client"
+    },
+    {
+      "slug": "project-07",
+      "year": 2024,
+      "title": "Project Seven",
+      "featured": false,
+      "thumbnail": "assets/images/project-07.svg",
+      "client": "Client",
+      "role": "Design",
+      "description": "Project description.",
+      "media": [
+        {
+          "type": "image",
+          "src": "assets/images/project-07.svg",
+          "alt": "Project Seven"
+        }
+      ],
+      "format": "Video",
+      "brand": "Personal"
+    },
+    {
+      "slug": "project-08",
+      "year": 2023,
+      "title": "Project Eight",
+      "featured": false,
+      "thumbnail": "assets/images/project-08.svg",
+      "client": "Client",
+      "role": "Design",
+      "description": "Project description.",
+      "media": [
+        {
+          "type": "image",
+          "src": "assets/images/project-08.svg",
+          "alt": "Project Eight"
+        }
+      ],
+      "format": "Design",
+      "brand": "Brand / Client"
+    },
+    {
+      "slug": "project-09",
+      "year": 2023,
+      "title": "Project Nine",
+      "featured": false,
+      "thumbnail": "assets/images/project-09.svg",
+      "client": "Client",
+      "role": "Design",
+      "description": "Project description.",
+      "media": [
+        {
+          "type": "image",
+          "src": "assets/images/project-09.svg",
+          "alt": "Project Nine"
+        }
+      ],
+      "format": "Images / Video",
+      "brand": "Personal"
+    }
+  ]
+}

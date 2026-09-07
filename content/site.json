@@ -1,0 +1,28 @@
+{
+  "name": "Virginie Palermo",
+  "intro": "Selected personal and professional work.",
+  "about": "A concise introduction to your story, background, interests, and the work collected here.",
+  "location": "Copenhagen, Denmark",
+  "email": "",
+  "instagram": "virginie.palermo",
+  "strava": "",
+  "stravaLabel": "Virginie Palermo",
+  "linkedin": "",
+  "linkedinLabel": "Virginie Palermo",
+  "website": "",
+  "websiteLabel": "",
+  "resume": [
+    {
+      "period": "2024—Now",
+      "role": "Role",
+      "company": "Company"
+    },
+    {
+      "period": "2022—2024",
+      "role": "Role",
+      "company": "Company"
+    }
+  ],
+  "copyrightStartYear": 2026,
+  "siteCredit": "Site design + development — Virginie Palermo / 2026"
+}
