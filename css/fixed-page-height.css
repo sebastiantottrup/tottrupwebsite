@@ -1,0 +1,26 @@
+/* Keep the navigation at one fixed vertical position on all non-home pages. */
+:root {
+  --fixed-content-height: 500px;
+}
+
+.page:not(.page--home),
+.work-page,
+.page--project {
+  height: min(var(--fixed-content-height), calc(100svh - 120px));
+  max-height: min(var(--fixed-content-height), calc(100svh - 120px));
+}
+
+/* Home remains intentionally shallower. */
+.page--home {
+  height: min(var(--home-height), calc((100vw - 32px) * .4545));
+  max-height: var(--home-height);
+}
+
+@media (max-width: 700px) {
+  .page:not(.page--home),
+  .work-page,
+  .page--project {
+    height: min(var(--fixed-content-height), calc(100svh - 105px));
+    max-height: min(var(--fixed-content-height), calc(100svh - 105px));
+  }
+}
