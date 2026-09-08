@@ -1,0 +1,36 @@
+/* Work-only footer control placement and transition. */
+
+.site-footer--work {
+  grid-template-columns: 340px minmax(0, 1fr) auto;
+}
+
+.site-footer--work .display-switch {
+  justify-self: start;
+  opacity: 1;
+  transition: opacity 180ms ease;
+}
+
+.js body[data-page-state="loading"] .site-footer--work .display-switch,
+.js body[data-page-state="leaving"] .site-footer--work .display-switch {
+  opacity: 0;
+}
+
+@media (max-width: 700px) {
+  .site-footer--work {
+    grid-template-columns: 1fr auto;
+    grid-template-areas:
+      "nav copyright"
+      "display display";
+  }
+
+  .site-footer--work .display-switch {
+    grid-area: display;
+    justify-self: start;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .site-footer--work .display-switch {
+    transition: none;
+  }
+}
