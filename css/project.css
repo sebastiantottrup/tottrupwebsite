@@ -46,13 +46,17 @@
   outline-offset: -1px;
 }
 
+/* Always fit the complete media inside the square stage.
+   Nothing is cropped, regardless of source aspect ratio. */
 .project-stage img,
 .project-stage video {
-  width: auto;
-  height: auto;
+  display: block;
+  width: 100%;
+  height: 100%;
   max-width: 100%;
   max-height: 100%;
   object-fit: contain;
+  object-position: center;
   background: #fff;
 }
 
@@ -180,7 +184,7 @@
   position: fixed;
   inset: 0;
   width: 100vw;
-  height: 100dvh;
+  height: 100svh;
   z-index: 3000;
   overflow: hidden;
   background: #fff;
@@ -191,19 +195,22 @@
   display: none;
 }
 
+/* The viewport itself is the centering reference, which prevents
+   the media from drifting because of the centered site shell. */
 .project-lightbox__inner {
-  position: static;
-  width: 100%;
-  height: 100%;
+  position: relative;
+  width: 100vw;
+  height: 100svh;
+  display: grid;
+  place-items: center;
+  overflow: hidden;
 }
 
 .project-lightbox__stage {
-  position: fixed;
-  top: 50dvh;
-  left: 50vw;
-  transform: translate(-50%, -50%);
-  width: min(72vw, 1080px);
-  height: min(68dvh, 760px);
+  position: static;
+  transform: none;
+  width: min(60vw, 880px);
+  height: min(60svh, 620px);
   display: grid;
   place-items: center;
   min-width: 0;
@@ -213,11 +220,12 @@
 .project-lightbox__stage img,
 .project-lightbox__stage video {
   display: block;
-  width: auto;
-  height: auto;
+  width: 100%;
+  height: 100%;
   max-width: 100%;
   max-height: 100%;
   object-fit: contain;
+  object-position: center;
   background: #fff;
 }
 
@@ -230,7 +238,7 @@
 .project-lightbox__prev,
 .project-lightbox__next {
   position: fixed;
-  top: 50dvh;
+  top: 50%;
   transform: translateY(-50%);
   padding: 18px !important;
 }
@@ -241,7 +249,7 @@
 .project-lightbox__counter {
   position: fixed;
   bottom: 18px;
-  left: 50vw;
+  left: 50%;
   transform: translateX(-50%);
   white-space: nowrap;
 }
@@ -286,7 +294,7 @@ body.is-lightbox-open {
   }
 
   .project-lightbox__stage {
-    width: min(80vw, 620px);
-    height: min(66dvh, 680px);
+    width: min(78vw, 560px);
+    height: min(58svh, 560px);
   }
 }
