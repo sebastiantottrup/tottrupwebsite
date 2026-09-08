@@ -30,8 +30,9 @@
   aspect-ratio: 1 / 1;
   min-width: 0;
   min-height: 0;
-  display: grid;
-  place-items: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   background: #fff;
   overflow: hidden;
   outline: none;
@@ -46,17 +47,18 @@
   outline-offset: -1px;
 }
 
-/* Always fit the complete media inside the square stage.
-   Nothing is cropped, regardless of source aspect ratio. */
+/* Keep the source aspect ratio. The actual media element scales only
+   as far as needed to fit inside the square and is never cropped. */
 .project-stage img,
 .project-stage video {
   display: block;
-  width: 100%;
-  height: 100%;
+  width: auto;
+  height: auto;
   max-width: 100%;
   max-height: 100%;
   object-fit: contain;
   object-position: center;
+  flex: 0 1 auto;
   background: #fff;
 }
 
@@ -184,7 +186,7 @@
   position: fixed;
   inset: 0;
   width: 100vw;
-  height: 100svh;
+  height: 100dvh;
   z-index: 3000;
   overflow: hidden;
   background: #fff;
@@ -195,37 +197,40 @@
   display: none;
 }
 
-/* The viewport itself is the centering reference, which prevents
-   the media from drifting because of the centered site shell. */
 .project-lightbox__inner {
-  position: relative;
+  position: fixed;
+  inset: 0;
   width: 100vw;
-  height: 100svh;
-  display: grid;
-  place-items: center;
+  height: 100dvh;
   overflow: hidden;
 }
 
+/* Center against the viewport itself, not the portfolio layout. */
 .project-lightbox__stage {
-  position: static;
-  transform: none;
-  width: min(60vw, 880px);
-  height: min(60svh, 620px);
-  display: grid;
-  place-items: center;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: min(52vw, 760px);
+  height: min(52dvh, 560px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
   min-width: 0;
   min-height: 0;
+  overflow: hidden;
 }
 
 .project-lightbox__stage img,
 .project-lightbox__stage video {
   display: block;
-  width: 100%;
-  height: 100%;
+  width: auto;
+  height: auto;
   max-width: 100%;
   max-height: 100%;
   object-fit: contain;
   object-position: center;
+  flex: 0 1 auto;
   background: #fff;
 }
 
@@ -294,7 +299,7 @@ body.is-lightbox-open {
   }
 
   .project-lightbox__stage {
-    width: min(78vw, 560px);
-    height: min(58svh, 560px);
+    width: min(74vw, 520px);
+    height: min(48dvh, 520px);
   }
 }
