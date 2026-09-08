@@ -15,30 +15,43 @@
   "professionalExperience": [
     {
       "company": "Polymer Workshop",
-      "companyUrl": "",
       "skills": "Creative Director, Brand Marketing, Founding Member",
       "period": "2023 - N/A"
     },
     {
       "company": "Cent Cols",
-      "companyUrl": "",
       "skills": "Creative, Cycling Guide, Company Manager",
       "period": "2023 - 2024"
     },
     {
       "company": "Pas Normal Studios",
-      "companyUrl": "",
       "skills": "Marketing, Social Media, Events, Campaigns",
       "period": "2019 - 2023"
     },
     {
       "company": "VIA University Collage",
-      "companyUrl": "",
       "skills": "Student",
       "period": "2018 - 2020"
     }
   ],
-  "personalExperience": [],
+  "personalExperience": [
+    {
+      "company": "VACWM",
+      "skills": "Brand Development, Product Design, Creative Direction",
+      "period": "2018"
+    },
+    {
+      "company": "Roadporn",
+      "companyUrl": "www.roadporn.cc",
+      "skills": "Concept Creation",
+      "period": "2018"
+    },
+    {
+      "company": "Ceremony",
+      "skills": "Brand Development, Product Design, Creative Direction",
+      "period": "2027"
+    }
+  ],
   "instagram": "mrtottrup",
   "strava": "https://www.strava.com/athletes/25686378",
   "stravaLabel": "mrtottrup",
