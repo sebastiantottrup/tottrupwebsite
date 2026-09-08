@@ -64,11 +64,11 @@
     },
     {
       "slug": "project-03",
-      "year": 2025,
+      "year": 2023,
       "title": "Panaracer I",
       "featured": true,
       "featuredOrder": 3,
-      "thumbnail": "assets/images/project-03.svg",
+      "thumbnail": "assets/uploads/polymerworkshopi99pani99ai99ri99aci99er-01.jpg",
       "thumbnailAlt": "Project Three",
       "format": "Video",
       "brand": "Polymer Workshop",
@@ -78,8 +78,16 @@
       "media": [
         {
           "type": "image",
-          "src": "assets/images/project-03.svg",
+          "src": "assets/uploads/polymerworkshopi99pani99ai99ri99aci99er-04.jpg",
           "alt": "Project Three"
+        },
+        {
+          "type": "image",
+          "src": "assets/uploads/polymerworkshopi99pani99ai99ri99aci99er-02.jpg"
+        },
+        {
+          "type": "image",
+          "src": "assets/uploads/polymerworkshopi99pani99ai99ri99aci99er-10.jpg"
         }
       ]
     },
