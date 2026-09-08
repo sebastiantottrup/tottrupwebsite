@@ -44,9 +44,11 @@
   function targetIsHome(link) {
     const href = (link.getAttribute('href') || '').trim();
     const url = new URL(link.href, window.location.href);
-    return href === 'index.html' ||
+    return href === '/' ||
+      href === 'index.html' ||
       href === './index.html' ||
       href === './' ||
+      url.pathname === '/' ||
       url.pathname.endsWith('/index.html');
   }
 
