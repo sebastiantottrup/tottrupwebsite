@@ -61,6 +61,14 @@
   object-fit: contain;
   object-position: center;
   background: #fff;
+  opacity: 1;
+  transition: opacity 180ms ease;
+  will-change: opacity;
+}
+
+.project-stage.is-media-faded > img,
+.project-stage.is-media-faded > video {
+  opacity: 0;
 }
 
 .project-gallery-controls {
@@ -206,14 +214,15 @@
   overflow: hidden;
 }
 
-/* Center against the viewport itself, not the portfolio layout. */
+/* Center against the viewport itself, not the portfolio layout.
+   The viewing area is approximately 30% larger than the previous size. */
 .project-lightbox__stage {
   position: fixed;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  width: min(52vw, 760px);
-  height: min(52dvh, 560px);
+  width: min(68vw, 990px);
+  height: min(68dvh, 730px);
   min-width: 0;
   min-height: 0;
   overflow: hidden;
@@ -233,6 +242,14 @@
   object-fit: contain;
   object-position: center;
   background: #fff;
+  opacity: 1;
+  transition: opacity 180ms ease;
+  will-change: opacity;
+}
+
+.project-lightbox__stage.is-media-faded > img,
+.project-lightbox__stage.is-media-faded > video {
+  opacity: 0;
 }
 
 .project-lightbox__close {
@@ -262,6 +279,15 @@
 
 body.is-lightbox-open {
   overflow: hidden;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .project-stage > img,
+  .project-stage > video,
+  .project-lightbox__stage > img,
+  .project-lightbox__stage > video {
+    transition: none;
+  }
 }
 
 @media (max-width: 700px) {
@@ -300,7 +326,7 @@ body.is-lightbox-open {
   }
 
   .project-lightbox__stage {
-    width: min(74vw, 520px);
-    height: min(48dvh, 520px);
+    width: min(90vw, 680px);
+    height: min(62dvh, 680px);
   }
 }
