@@ -7,18 +7,20 @@ import {
   projectUrl,
   escapeHtml,
   revealPage
-} from './site.js';
+} from './site.js?v=20260908-3';
 
 const grid = document.querySelector('[data-project-grid]');
 
 try {
   const [projects, site] = await Promise.all([loadProjects(), loadSite()]);
   hydrateChrome(site);
+  const featuredForSeo = projects.find(project => project.featured);
   hydrateSeo(site, {
-    title: site.seoTitle || site.name || 'Portfolio',
+    title: site.seoTitle || site.name || 'Sebastian Tottrup',
     description: site.seoDescription || site.intro || 'Selected personal and professional projects.',
     path: 'index.html',
-    image: site.seoImage || projects.find(project => project.featured)?.thumbnail,
+    image: site.seoImage || featuredForSeo?.thumbnail,
+    imageAlt: featuredForSeo?.thumbnailAlt || `${site.name || 'Sebastian Tottrup'} portfolio`,
     type: 'website'
   });
   hydratePersonSchema(site);
