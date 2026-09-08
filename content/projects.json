@@ -3,31 +3,28 @@
     {
       "slug": "project-01",
       "year": 2026,
-      "title": "Project One",
+      "title": "ALPHA Wheel Bearing",
       "featured": true,
       "featuredOrder": 1,
       "thumbnail": "assets/images/project-01.svg",
-      "client": "Client / Self-initiated",
-      "role": "Creative Direction / Design",
-      "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed posuere, arcu vitae vulputate commodo, justo neque tincidunt est, vitae malesuada mauris lorem sed neque. Integer feugiat, lectus at faucibus tristique, libero erat pretium augue, eget feugiat nisi augue sed lorem. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Donec sed tempor justo, sed tincidunt ligula.\n\nPraesent congue, sem vel malesuada pellentesque, lorem justo vulputate neque, sed tristique nibh erat a augue. Nulla facilisi. Mauris porttitor viverra tortor, at convallis lacus posuere non. Curabitur id tellus sed sapien tincidunt interdum. Donec feugiat, neque at feugiat varius, nisl nibh luctus justo, sed posuere velit tortor sed massa.\n\nAliquam erat volutpat. Vivamus malesuada posuere nibh, a pulvinar purus luctus sed. Phasellus luctus ipsum at tellus cursus, vitae dignissim libero faucibus. Sed vitae eros ut lectus tincidunt dictum. Suspendisse potenti. Nunc posuere, mi id tempor suscipit, urna tortor egestas lectus, at luctus lacus erat sed justo.\n\nCras sit amet ipsum id erat tincidunt malesuada. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Morbi elementum, erat nec aliquet facilisis, nibh erat tincidunt libero, sed elementum nisl lorem sit amet neque. Integer tempor dolor in sapien luctus, quis vestibulum ipsum consequat.\n\nFusce tincidunt, sapien in vulputate interdum, massa turpis pharetra justo, vitae tristique est arcu at nisl. Duis vitae erat sed mauris consequat tempor. Etiam non risus vel erat feugiat vestibulum. Aenean vel neque nec velit feugiat posuere. Donec vitae libero vitae nibh consequat commodo sed at ligula.",
+      "thumbnailAlt": "Project One",
+      "format": "Images / Video",
+      "brand": "CeramicSpeed",
+      "client": "CeramicSpeed",
+      "role": "Photography",
+      "description": "Photos created to support the launch of Ceramicspeeds new ALPHA bearings. Shot outside of Copenhagen with rider Virginia Palermo.",
       "media": [
         {
           "type": "image",
-          "src": "assets/images/project-01.svg",
-          "alt": "Project One"
+          "src": "assets/uploads/dsc00871.jpg",
+          "alt": "CeramicSpeed_AlphaWheelBearings_001"
         },
         {
           "type": "image",
-          "src": "assets/images/project-02.svg",
-          "alt": "Project One detail"
+          "src": "assets/uploads/dsc00073.jpg",
+          "alt": "CeramicSpeed_AlphaWheelBearings_002"
         }
-      ],
-      "format": "Images / Video",
-      "brand": "Pas Normal Studios",
-      "thumbnailAlt": "Project One",
-      "seoTitle": "",
-      "seoDescription": "",
-      "seoImage": ""
+      ]
     },
     {
       "slug": "project-02",
@@ -36,6 +33,9 @@
       "featured": true,
       "featuredOrder": 2,
       "thumbnail": "assets/images/project-02.svg",
+      "thumbnailAlt": "Project Two",
+      "format": "Product",
+      "brand": "Pas Normal Studios",
       "client": "Client",
       "role": "Design",
       "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed posuere, arcu vitae vulputate commodo, justo neque tincidunt est, vitae malesuada mauris lorem sed neque. Integer feugiat, lectus at faucibus tristique, libero erat pretium augue, eget feugiat nisi augue sed lorem. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Donec sed tempor justo, sed tincidunt ligula.\n\nPraesent congue, sem vel malesuada pellentesque, lorem justo vulputate neque, sed tristique nibh erat a augue. Nulla facilisi. Mauris porttitor viverra tortor, at convallis lacus posuere non. Curabitur id tellus sed sapien tincidunt interdum. Donec feugiat, neque at feugiat varius, nisl nibh luctus justo, sed posuere velit tortor sed massa.\n\nAliquam erat volutpat. Vivamus malesuada posuere nibh, a pulvinar purus luctus sed. Phasellus luctus ipsum at tellus cursus, vitae dignissim libero faucibus. Sed vitae eros ut lectus tincidunt dictum. Suspendisse potenti. Nunc posuere, mi id tempor suscipit, urna tortor egestas lectus, at luctus lacus erat sed justo.\n\nCras sit amet ipsum id erat tincidunt malesuada. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Morbi elementum, erat nec aliquet facilisis, nibh erat tincidunt libero, sed elementum nisl lorem sit amet neque. Integer tempor dolor in sapien luctus, quis vestibulum ipsum consequat.\n\nFusce tincidunt, sapien in vulputate interdum, massa turpis pharetra justo, vitae tristique est arcu at nisl. Duis vitae erat sed mauris consequat tempor. Etiam non risus vel erat feugiat vestibulum. Aenean vel neque nec velit feugiat posuere. Donec vitae libero vitae nibh consequat commodo sed at ligula.",
@@ -45,13 +45,7 @@
           "src": "assets/images/project-02.svg",
           "alt": "Project Two"
         }
-      ],
-      "format": "Product",
-      "brand": "Pas Normal Studios",
-      "thumbnailAlt": "Project Two",
-      "seoTitle": "",
-      "seoDescription": "",
-      "seoImage": ""
+      ]
     },
     {
       "slug": "project-03",
@@ -60,6 +54,9 @@
       "featured": true,
       "featuredOrder": 3,
       "thumbnail": "assets/images/project-03.svg",
+      "thumbnailAlt": "Project Three",
+      "format": "Video",
+      "brand": "Personal",
       "client": "Client",
       "role": "Photography",
       "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed posuere, arcu vitae vulputate commodo, justo neque tincidunt est, vitae malesuada mauris lorem sed neque. Integer feugiat, lectus at faucibus tristique, libero erat pretium augue, eget feugiat nisi augue sed lorem. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Donec sed tempor justo, sed tincidunt ligula.\n\nPraesent congue, sem vel malesuada pellentesque, lorem justo vulputate neque, sed tristique nibh erat a augue. Nulla facilisi. Mauris porttitor viverra tortor, at convallis lacus posuere non. Curabitur id tellus sed sapien tincidunt interdum. Donec feugiat, neque at feugiat varius, nisl nibh luctus justo, sed posuere velit tortor sed massa.\n\nAliquam erat volutpat. Vivamus malesuada posuere nibh, a pulvinar purus luctus sed. Phasellus luctus ipsum at tellus cursus, vitae dignissim libero faucibus. Sed vitae eros ut lectus tincidunt dictum. Suspendisse potenti. Nunc posuere, mi id tempor suscipit, urna tortor egestas lectus, at luctus lacus erat sed justo.\n\nCras sit amet ipsum id erat tincidunt malesuada. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Morbi elementum, erat nec aliquet facilisis, nibh erat tincidunt libero, sed elementum nisl lorem sit amet neque. Integer tempor dolor in sapien luctus, quis vestibulum ipsum consequat.\n\nFusce tincidunt, sapien in vulputate interdum, massa turpis pharetra justo, vitae tristique est arcu at nisl. Duis vitae erat sed mauris consequat tempor. Etiam non risus vel erat feugiat vestibulum. Aenean vel neque nec velit feugiat posuere. Donec vitae libero vitae nibh consequat commodo sed at ligula.",
@@ -69,13 +66,7 @@
           "src": "assets/images/project-03.svg",
           "alt": "Project Three"
         }
-      ],
-      "format": "Video",
-      "brand": "Personal",
-      "thumbnailAlt": "Project Three",
-      "seoTitle": "",
-      "seoDescription": "",
-      "seoImage": ""
+      ]
     },
     {
       "slug": "project-04",
@@ -84,6 +75,9 @@
       "featured": true,
       "featuredOrder": 4,
       "thumbnail": "assets/images/project-04.svg",
+      "thumbnailAlt": "Project Four",
+      "format": "Design",
+      "brand": "Polymer Workshop",
       "client": "Client",
       "role": "Art Direction",
       "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed posuere, arcu vitae vulputate commodo, justo neque tincidunt est, vitae malesuada mauris lorem sed neque. Integer feugiat, lectus at faucibus tristique, libero erat pretium augue, eget feugiat nisi augue sed lorem. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Donec sed tempor justo, sed tincidunt ligula.\n\nPraesent congue, sem vel malesuada pellentesque, lorem justo vulputate neque, sed tristique nibh erat a augue. Nulla facilisi. Mauris porttitor viverra tortor, at convallis lacus posuere non. Curabitur id tellus sed sapien tincidunt interdum. Donec feugiat, neque at feugiat varius, nisl nibh luctus justo, sed posuere velit tortor sed massa.\n\nAliquam erat volutpat. Vivamus malesuada posuere nibh, a pulvinar purus luctus sed. Phasellus luctus ipsum at tellus cursus, vitae dignissim libero faucibus. Sed vitae eros ut lectus tincidunt dictum. Suspendisse potenti. Nunc posuere, mi id tempor suscipit, urna tortor egestas lectus, at luctus lacus erat sed justo.\n\nCras sit amet ipsum id erat tincidunt malesuada. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Morbi elementum, erat nec aliquet facilisis, nibh erat tincidunt libero, sed elementum nisl lorem sit amet neque. Integer tempor dolor in sapien luctus, quis vestibulum ipsum consequat.\n\nFusce tincidunt, sapien in vulputate interdum, massa turpis pharetra justo, vitae tristique est arcu at nisl. Duis vitae erat sed mauris consequat tempor. Etiam non risus vel erat feugiat vestibulum. Aenean vel neque nec velit feugiat posuere. Donec vitae libero vitae nibh consequat commodo sed at ligula.",
@@ -93,13 +87,7 @@
           "src": "assets/images/project-04.svg",
           "alt": "Project Four"
         }
-      ],
-      "format": "Design",
-      "brand": "Polymer Workshop",
-      "thumbnailAlt": "Project Four",
-      "seoTitle": "",
-      "seoDescription": "",
-      "seoImage": ""
+      ]
     },
     {
       "slug": "project-05",
@@ -107,6 +95,9 @@
       "title": "Project Five",
       "featured": false,
       "thumbnail": "assets/images/project-05.svg",
+      "thumbnailAlt": "Project Five",
+      "format": "Images / Video",
+      "brand": "Polymer Workshop",
       "client": "Client",
       "role": "Campaign",
       "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed posuere, arcu vitae vulputate commodo, justo neque tincidunt est, vitae malesuada mauris lorem sed neque. Integer feugiat, lectus at faucibus tristique, libero erat pretium augue, eget feugiat nisi augue sed lorem. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Donec sed tempor justo, sed tincidunt ligula.\n\nPraesent congue, sem vel malesuada pellentesque, lorem justo vulputate neque, sed tristique nibh erat a augue. Nulla facilisi. Mauris porttitor viverra tortor, at convallis lacus posuere non. Curabitur id tellus sed sapien tincidunt interdum. Donec feugiat, neque at feugiat varius, nisl nibh luctus justo, sed posuere velit tortor sed massa.\n\nAliquam erat volutpat. Vivamus malesuada posuere nibh, a pulvinar purus luctus sed. Phasellus luctus ipsum at tellus cursus, vitae dignissim libero faucibus. Sed vitae eros ut lectus tincidunt dictum. Suspendisse potenti. Nunc posuere, mi id tempor suscipit, urna tortor egestas lectus, at luctus lacus erat sed justo.\n\nCras sit amet ipsum id erat tincidunt malesuada. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Morbi elementum, erat nec aliquet facilisis, nibh erat tincidunt libero, sed elementum nisl lorem sit amet neque. Integer tempor dolor in sapien luctus, quis vestibulum ipsum consequat.\n\nFusce tincidunt, sapien in vulputate interdum, massa turpis pharetra justo, vitae tristique est arcu at nisl. Duis vitae erat sed mauris consequat tempor. Etiam non risus vel erat feugiat vestibulum. Aenean vel neque nec velit feugiat posuere. Donec vitae libero vitae nibh consequat commodo sed at ligula.",
@@ -116,13 +107,7 @@
           "src": "assets/images/project-05.svg",
           "alt": "Project Five"
         }
-      ],
-      "format": "Images / Video",
-      "brand": "Polymer Workshop",
-      "thumbnailAlt": "Project Five",
-      "seoTitle": "",
-      "seoDescription": "",
-      "seoImage": ""
+      ]
     },
     {
       "slug": "project-06",
@@ -130,6 +115,9 @@
       "title": "Project Six",
       "featured": false,
       "thumbnail": "assets/images/project-06.svg",
+      "thumbnailAlt": "Project Six",
+      "format": "Product",
+      "brand": "Brand / Client",
       "client": "Client",
       "role": "Design",
       "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed posuere, arcu vitae vulputate commodo, justo neque tincidunt est, vitae malesuada mauris lorem sed neque. Integer feugiat, lectus at faucibus tristique, libero erat pretium augue, eget feugiat nisi augue sed lorem. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Donec sed tempor justo, sed tincidunt ligula.\n\nPraesent congue, sem vel malesuada pellentesque, lorem justo vulputate neque, sed tristique nibh erat a augue. Nulla facilisi. Mauris porttitor viverra tortor, at convallis lacus posuere non. Curabitur id tellus sed sapien tincidunt interdum. Donec feugiat, neque at feugiat varius, nisl nibh luctus justo, sed posuere velit tortor sed massa.\n\nAliquam erat volutpat. Vivamus malesuada posuere nibh, a pulvinar purus luctus sed. Phasellus luctus ipsum at tellus cursus, vitae dignissim libero faucibus. Sed vitae eros ut lectus tincidunt dictum. Suspendisse potenti. Nunc posuere, mi id tempor suscipit, urna tortor egestas lectus, at luctus lacus erat sed justo.\n\nCras sit amet ipsum id erat tincidunt malesuada. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Morbi elementum, erat nec aliquet facilisis, nibh erat tincidunt libero, sed elementum nisl lorem sit amet neque. Integer tempor dolor in sapien luctus, quis vestibulum ipsum consequat.\n\nFusce tincidunt, sapien in vulputate interdum, massa turpis pharetra justo, vitae tristique est arcu at nisl. Duis vitae erat sed mauris consequat tempor. Etiam non risus vel erat feugiat vestibulum. Aenean vel neque nec velit feugiat posuere. Donec vitae libero vitae nibh consequat commodo sed at ligula.",
@@ -139,13 +127,7 @@
           "src": "assets/images/project-06.svg",
           "alt": "Project Six"
         }
-      ],
-      "format": "Product",
-      "brand": "Brand / Client",
-      "thumbnailAlt": "Project Six",
-      "seoTitle": "",
-      "seoDescription": "",
-      "seoImage": ""
+      ]
     },
     {
       "slug": "project-07",
@@ -153,6 +135,9 @@
       "title": "Project Seven",
       "featured": false,
       "thumbnail": "assets/images/project-07.svg",
+      "thumbnailAlt": "Project Seven",
+      "format": "Video",
+      "brand": "Personal",
       "client": "Client",
       "role": "Design",
       "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed posuere, arcu vitae vulputate commodo, justo neque tincidunt est, vitae malesuada mauris lorem sed neque. Integer feugiat, lectus at faucibus tristique, libero erat pretium augue, eget feugiat nisi augue sed lorem. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Donec sed tempor justo, sed tincidunt ligula.\n\nPraesent congue, sem vel malesuada pellentesque, lorem justo vulputate neque, sed tristique nibh erat a augue. Nulla facilisi. Mauris porttitor viverra tortor, at convallis lacus posuere non. Curabitur id tellus sed sapien tincidunt interdum. Donec feugiat, neque at feugiat varius, nisl nibh luctus justo, sed posuere velit tortor sed massa.\n\nAliquam erat volutpat. Vivamus malesuada posuere nibh, a pulvinar purus luctus sed. Phasellus luctus ipsum at tellus cursus, vitae dignissim libero faucibus. Sed vitae eros ut lectus tincidunt dictum. Suspendisse potenti. Nunc posuere, mi id tempor suscipit, urna tortor egestas lectus, at luctus lacus erat sed justo.\n\nCras sit amet ipsum id erat tincidunt malesuada. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Morbi elementum, erat nec aliquet facilisis, nibh erat tincidunt libero, sed elementum nisl lorem sit amet neque. Integer tempor dolor in sapien luctus, quis vestibulum ipsum consequat.\n\nFusce tincidunt, sapien in vulputate interdum, massa turpis pharetra justo, vitae tristique est arcu at nisl. Duis vitae erat sed mauris consequat tempor. Etiam non risus vel erat feugiat vestibulum. Aenean vel neque nec velit feugiat posuere. Donec vitae libero vitae nibh consequat commodo sed at ligula.",
@@ -162,13 +147,7 @@
           "src": "assets/images/project-07.svg",
           "alt": "Project Seven"
         }
-      ],
-      "format": "Video",
-      "brand": "Personal",
-      "thumbnailAlt": "Project Seven",
-      "seoTitle": "",
-      "seoDescription": "",
-      "seoImage": ""
+      ]
     },
     {
       "slug": "project-08",
@@ -176,6 +155,9 @@
       "title": "Project Eight",
       "featured": false,
       "thumbnail": "assets/images/project-08.svg",
+      "thumbnailAlt": "Project Eight",
+      "format": "Design",
+      "brand": "Brand / Client",
       "client": "Client",
       "role": "Design",
       "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed posuere, arcu vitae vulputate commodo, justo neque tincidunt est, vitae malesuada mauris lorem sed neque. Integer feugiat, lectus at faucibus tristique, libero erat pretium augue, eget feugiat nisi augue sed lorem. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Donec sed tempor justo, sed tincidunt ligula.\n\nPraesent congue, sem vel malesuada pellentesque, lorem justo vulputate neque, sed tristique nibh erat a augue. Nulla facilisi. Mauris porttitor viverra tortor, at convallis lacus posuere non. Curabitur id tellus sed sapien tincidunt interdum. Donec feugiat, neque at feugiat varius, nisl nibh luctus justo, sed posuere velit tortor sed massa.\n\nAliquam erat volutpat. Vivamus malesuada posuere nibh, a pulvinar purus luctus sed. Phasellus luctus ipsum at tellus cursus, vitae dignissim libero faucibus. Sed vitae eros ut lectus tincidunt dictum. Suspendisse potenti. Nunc posuere, mi id tempor suscipit, urna tortor egestas lectus, at luctus lacus erat sed justo.\n\nCras sit amet ipsum id erat tincidunt malesuada. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Morbi elementum, erat nec aliquet facilisis, nibh erat tincidunt libero, sed elementum nisl lorem sit amet neque. Integer tempor dolor in sapien luctus, quis vestibulum ipsum consequat.\n\nFusce tincidunt, sapien in vulputate interdum, massa turpis pharetra justo, vitae tristique est arcu at nisl. Duis vitae erat sed mauris consequat tempor. Etiam non risus vel erat feugiat vestibulum. Aenean vel neque nec velit feugiat posuere. Donec vitae libero vitae nibh consequat commodo sed at ligula.",
@@ -185,13 +167,7 @@
           "src": "assets/images/project-08.svg",
           "alt": "Project Eight"
         }
-      ],
-      "format": "Design",
-      "brand": "Brand / Client",
-      "thumbnailAlt": "Project Eight",
-      "seoTitle": "",
-      "seoDescription": "",
-      "seoImage": ""
+      ]
     },
     {
       "slug": "project-09",
@@ -199,6 +175,9 @@
       "title": "Project Nine",
       "featured": false,
       "thumbnail": "assets/images/project-09.svg",
+      "thumbnailAlt": "Project Nine",
+      "format": "Images / Video",
+      "brand": "Personal",
       "client": "Client",
       "role": "Design",
       "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed posuere, arcu vitae vulputate commodo, justo neque tincidunt est, vitae malesuada mauris lorem sed neque. Integer feugiat, lectus at faucibus tristique, libero erat pretium augue, eget feugiat nisi augue sed lorem. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Donec sed tempor justo, sed tincidunt ligula.\n\nPraesent congue, sem vel malesuada pellentesque, lorem justo vulputate neque, sed tristique nibh erat a augue. Nulla facilisi. Mauris porttitor viverra tortor, at convallis lacus posuere non. Curabitur id tellus sed sapien tincidunt interdum. Donec feugiat, neque at feugiat varius, nisl nibh luctus justo, sed posuere velit tortor sed massa.\n\nAliquam erat volutpat. Vivamus malesuada posuere nibh, a pulvinar purus luctus sed. Phasellus luctus ipsum at tellus cursus, vitae dignissim libero faucibus. Sed vitae eros ut lectus tincidunt dictum. Suspendisse potenti. Nunc posuere, mi id tempor suscipit, urna tortor egestas lectus, at luctus lacus erat sed justo.\n\nCras sit amet ipsum id erat tincidunt malesuada. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Morbi elementum, erat nec aliquet facilisis, nibh erat tincidunt libero, sed elementum nisl lorem sit amet neque. Integer tempor dolor in sapien luctus, quis vestibulum ipsum consequat.\n\nFusce tincidunt, sapien in vulputate interdum, massa turpis pharetra justo, vitae tristique est arcu at nisl. Duis vitae erat sed mauris consequat tempor. Etiam non risus vel erat feugiat vestibulum. Aenean vel neque nec velit feugiat posuere. Donec vitae libero vitae nibh consequat commodo sed at ligula.",
@@ -208,13 +187,7 @@
           "src": "assets/images/project-09.svg",
           "alt": "Project Nine"
         }
-      ],
-      "format": "Images / Video",
-      "brand": "Personal",
-      "thumbnailAlt": "Project Nine",
-      "seoTitle": "",
-      "seoDescription": "",
-      "seoImage": ""
+      ]
     }
   ]
 }
