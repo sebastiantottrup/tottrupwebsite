@@ -1,4 +1,4 @@
-import { loadSite, hydrateChrome, hydrateSeo, hydratePersonSchema, escapeHtml, revealPage } from './site.js?v=20260908-3';
+import { loadSite, hydrateChrome, hydrateSeo, hydratePersonSchema, escapeHtml, revealPage } from './site.js?v=20260908-4';
 
 const page = document.querySelector('[data-about]');
 
@@ -8,7 +8,7 @@ try {
   hydrateSeo(site, {
     title: site.aboutSeoTitle || `About — ${site.name || 'Sebastian Tottrup'}`,
     description: site.aboutSeoDescription || site.about || site.intro || `About ${site.name || 'Sebastian Tottrup'}.`,
-    path: 'about.html',
+    path: '/about/',
     image: site.profileImage || site.seoImage,
     imageAlt: `${site.name || 'Sebastian Tottrup'} profile`,
     type: 'profile'
