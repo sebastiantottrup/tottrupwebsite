@@ -6,7 +6,7 @@ import {
   projectUrl,
   escapeHtml,
   revealPage
-} from './site.js';
+} from './site.js?v=20260908-3';
 
 const status = document.querySelector('[data-random-status]');
 
@@ -14,7 +14,7 @@ try {
   const [projects, site] = await Promise.all([loadProjects(), loadSite()]);
   hydrateChrome(site);
   hydrateSeo(site, {
-    title: `Random — ${site.name || 'Portfolio'}`,
+    title: `Random — ${site.name || 'Sebastian Tottrup'}`,
     description: 'Random project selection.',
     path: 'random.html',
     robots: 'noindex,follow'
