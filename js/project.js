@@ -24,6 +24,7 @@ const lightboxPrev = document.querySelector('[data-lightbox-prev]');
 const lightboxNext = document.querySelector('[data-lightbox-next]');
 
 const MEDIA_FADE_MS = 180;
+const SWIPE_THRESHOLD = 42;
 const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
 const mediaSwapTokens = new WeakMap();
 
@@ -128,6 +129,7 @@ try {
 
   let activeIndex = 0;
   let previousFocus = null;
+  let suppressStageClickUntil = 0;
 
   function renderStage({ animate = false } = {}) {
     replaceMedia(stage, mediaMarkup(media[activeIndex], project.title), { animate });
@@ -156,6 +158,38 @@ try {
     if (!lightbox.hidden) renderLightbox({ animate: true });
   }
 
+  function bindSwipeNavigation(element, { suppressStageClick = false } = {}) {
+    let startX = 0;
+    let startY = 0;
+    let pointerId = null;
+
+    element.addEventListener('pointerdown', event => {
+      if (event.pointerType === 'mouse' || !event.isPrimary) return;
+      if (event.target.closest('video')) return;
+      pointerId = event.pointerId;
+      startX = event.clientX;
+      startY = event.clientY;
+    });
+
+    element.addEventListener('pointerup', event => {
+      if (pointerId !== event.pointerId) return;
+
+      const deltaX = event.clientX - startX;
+      const deltaY = event.clientY - startY;
+      pointerId = null;
+
+      const horizontalSwipe = Math.abs(deltaX) >= SWIPE_THRESHOLD && Math.abs(deltaX) > Math.abs(deltaY) * 1.15;
+      if (!horizontalSwipe || media.length < 2) return;
+
+      if (suppressStageClick) suppressStageClickUntil = performance.now() + 450;
+      changeIndex(deltaX < 0 ? 1 : -1);
+    });
+
+    element.addEventListener('pointercancel', () => {
+      pointerId = null;
+    });
+  }
+
   function openLightbox() {
     previousFocus = document.activeElement;
     renderLightbox();
@@ -178,7 +212,11 @@ try {
     if (event.target.closest('[data-gallery-next]')) changeIndex(1);
   });
 
+  bindSwipeNavigation(stage, { suppressStageClick: true });
+  bindSwipeNavigation(lightboxStage);
+
   stage.addEventListener('click', () => {
+    if (performance.now() < suppressStageClickUntil) return;
     if (mediaKind(media[activeIndex]) === 'image') openLightbox();
   });
 
