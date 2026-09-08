@@ -19,16 +19,23 @@
   "linkedinLabel": "Sebastian Tottrup",
   "resume": [
     {
-      "period": "2024—Now",
-      "role": "Role",
-      "company": "Company"
+      "period": "2023 - 202X",
+      "role": "Creative Director / Brand Marketing / Founding Member",
+      "company": "Polymer Workshop"
     },
     {
-      "period": "2022—2024",
-      "role": "Role",
-      "company": "Company"
+      "period": "2023 - 2024",
+      "role": "Company Manager",
+      "company": "Cent Cols"
+    },
+    {
+      "period": "2019-2023",
+      "role": "Marketing",
+      "company": "Pas Normal Studios"
     }
   ],
   "copyrightStartYear": 1997,
-  "siteCredit": "Site design + development — Sebastian Tottrup / 2026"
+  "siteCredit": "Site design + development by Sebastian Tottrup",
+  "website": "https://www.tottrup.zip/",
+  "websiteLabel": "Website"
 }
