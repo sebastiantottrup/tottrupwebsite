@@ -32,10 +32,10 @@ try {
     <section>
       <h1>Connect</h1>
       <div class="connect-list">
-        <button class="connect-row connect-row--button" type="button" data-email-reveal>
+        <a class="connect-row" href="#" role="button" data-email-reveal>
           <span>Email</span>
           <span data-email-value>Click to reveal</span>
-        </button>
+        </a>
         ${links.map(link => `
           <a class="connect-row" href="${escapeHtml(link.href)}" ${link.external ? 'target="_blank" rel="noreferrer"' : ''}>
             <span>${escapeHtml(link.label)}</span>
@@ -52,7 +52,8 @@ try {
   // This avoids exposing a plain-text email address to basic crawl/scrape bots.
   const protectedEmailParts = ['c2ViYXN0aWFudG90dHJ1cA==', 'Z21haWwuY29t'];
   let emailRevealed = false;
-  emailButton?.addEventListener('click', () => {
+  emailButton?.addEventListener('click', event => {
+    event.preventDefault();
     const email = protectedEmailParts.map(part => atob(part)).join('@');
     if (!emailRevealed) {
       emailRevealed = true;
