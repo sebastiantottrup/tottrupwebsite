@@ -7,7 +7,7 @@ import {
   projectUrl,
   escapeHtml,
   revealPage
-} from './site.js?v=20260908-3';
+} from './site.js?v=20260908-4';
 
 const grid = document.querySelector('[data-project-grid]');
 
@@ -18,7 +18,7 @@ try {
   hydrateSeo(site, {
     title: site.seoTitle || site.name || 'Sebastian Tottrup',
     description: site.seoDescription || site.intro || 'Selected personal and professional projects.',
-    path: 'index.html',
+    path: '/',
     image: site.seoImage || featuredForSeo?.thumbnail,
     imageAlt: featuredForSeo?.thumbnailAlt || `${site.name || 'Sebastian Tottrup'} portfolio`,
     type: 'website'
