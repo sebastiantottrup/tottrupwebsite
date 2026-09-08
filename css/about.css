@@ -1,0 +1,49 @@
+/* About page experience lists */
+.experience-list {
+  border-top: 1px solid var(--line);
+}
+
+.experience-row {
+  display: grid;
+  grid-template-columns: minmax(150px, .9fr) minmax(0, 1.65fr) max-content;
+  gap: 14px;
+  align-items: baseline;
+  padding: 6px 0;
+  border-bottom: 1px solid var(--line);
+}
+
+.experience-company {
+  min-width: 0;
+  font-weight: 700;
+}
+
+.experience-company a:hover,
+.experience-company a:focus-visible {
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 2px;
+  outline: none;
+}
+
+.experience-skills {
+  min-width: 0;
+}
+
+.experience-period {
+  color: var(--muted);
+  text-align: right;
+  white-space: nowrap;
+}
+
+@media (max-width: 590px) {
+  .experience-row {
+    grid-template-columns: minmax(105px, .8fr) minmax(0, 1.2fr);
+    column-gap: 12px;
+    row-gap: 2px;
+  }
+
+  .experience-period {
+    grid-column: 2;
+    text-align: left;
+  }
+}
