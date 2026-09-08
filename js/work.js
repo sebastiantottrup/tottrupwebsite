@@ -8,7 +8,7 @@ import {
   escapeHtml,
   sortProjects,
   revealPage
-} from './site.js?v=20260908-3';
+} from './site.js?v=20260908-4';
 
 const list = document.querySelector('[data-work-list]');
 const grid = document.querySelector('[data-work-grid]');
@@ -74,7 +74,7 @@ try {
   hydrateSeo(site, {
     title: site.workSeoTitle || `Work — ${site.name || 'Sebastian Tottrup'}`,
     description: site.workSeoDescription || `Selected personal and professional projects by ${site.name || 'Sebastian Tottrup'}.`,
-    path: 'work.html',
+    path: '/work/',
     image: site.seoImage || projects[0]?.thumbnail,
     imageAlt: `${site.name || 'Sebastian Tottrup'} — selected work`,
     type: 'website'
