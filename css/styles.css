@@ -21,7 +21,7 @@
   --line: #d7d7d7;
   --hover: #8d8d8d;
   --soft: #f2f2f2;
-  --site-width: 800px;
+  --site-width: 900px;
   --page-height: 420px;
   --project-height: 500px;
   --home-height: 250px;
@@ -107,7 +107,7 @@ img, video { display: block; max-width: 100%; }
 .no-js .site-loader { display: none; }
 
 /* ---------------------------------------------------------
-   Fixed 800px content object
+   Fixed 900px content object
    --------------------------------------------------------- */
 .page,
 .work-page {
