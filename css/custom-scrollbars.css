@@ -8,6 +8,7 @@
 .custom-scrollbar-target {
   scrollbar-width: none !important;
   -ms-overflow-style: none;
+  overscroll-behavior: contain;
 }
 
 .custom-scrollbar-target::-webkit-scrollbar {
@@ -37,6 +38,7 @@
   z-index: 40;
   user-select: none;
   touch-action: none;
+  overflow: hidden;
 }
 
 .custom-scrollbar[hidden] {
