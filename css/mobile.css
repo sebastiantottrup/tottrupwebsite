@@ -5,6 +5,17 @@
     --mobile-footer-clearance: 118px;
   }
 
+  /* Keep normal scrolling and pinch-to-zoom, but disable Safari/Chrome's
+     double-tap-to-zoom gesture so quick taps around the interface do not
+     unexpectedly magnify the page. */
+  html,
+  body,
+  .site-shell,
+  a,
+  button {
+    touch-action: manipulation;
+  }
+
   body {
     padding: 14px 10px calc(var(--mobile-footer-clearance) + env(safe-area-inset-bottom));
     overflow: auto;
@@ -14,6 +25,13 @@
     width: min(var(--site-width), calc(100vw - 20px));
     margin: 0 auto;
     gap: 0;
+  }
+
+  /* Keep project swipe areas dedicated to horizontal gallery gestures while
+     preserving vertical page scrolling and two-finger pinch zoom. */
+  .project-stage,
+  .project-lightbox__stage {
+    touch-action: pan-y pinch-zoom;
   }
 
   /* Fixed mobile chrome: full-width opaque layer so page content can never
