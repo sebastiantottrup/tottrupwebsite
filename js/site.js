@@ -1,4 +1,4 @@
-const CONTENT_ROOT = './content';
+const CONTENT_ROOT = '/content';
 const PAGE_LOAD_STARTED = performance.now();
 const MIN_LOADING_TIME = 280;
 const PAGE_FADE_TIME = 180;
@@ -6,6 +6,34 @@ const PAGE_FADE_TIME = 180;
 function delay(ms) {
   return new Promise(resolve => window.setTimeout(resolve, ms));
 }
+
+function normalizeLegacyUrl() {
+  const { pathname, search, hash } = window.location;
+  const legacyRoutes = new Map([
+    ['/index.html', '/'],
+    ['/work.html', '/work/'],
+    ['/about.html', '/about/'],
+    ['/connect.html', '/connect/'],
+    ['/random.html', '/random/']
+  ]);
+
+  if (pathname.endsWith('/project.html')) {
+    const slug = new URLSearchParams(search).get('slug');
+    if (slug) {
+      history.replaceState({}, '', `/work/${encodeURIComponent(slug)}/${hash || ''}`);
+      return;
+    }
+  }
+
+  for (const [legacy, clean] of legacyRoutes) {
+    if (pathname.endsWith(legacy)) {
+      history.replaceState({}, '', `${clean}${search}${hash}`);
+      return;
+    }
+  }
+}
+
+normalizeLegacyUrl();
 
 function isInternalNavigation(link, event) {
   if (!link || event.defaultPrevented) return false;
@@ -94,6 +122,19 @@ export async function revealPage({ imagesWithin = null } = {}) {
 }
 
 export function hydrateChrome(site) {
+  const navRoutes = {
+    'index.html': '/',
+    'work.html': '/work/',
+    'random.html': '/random/',
+    'about.html': '/about/',
+    'connect.html': '/connect/'
+  };
+
+  document.querySelectorAll('.footer-nav a[href]').forEach(link => {
+    const href = link.getAttribute('href');
+    if (navRoutes[href]) link.setAttribute('href', navRoutes[href]);
+  });
+
   document.querySelectorAll('[data-site-name]').forEach(element => {
     element.textContent = site.name || 'Sebastian Tottrup';
   });
@@ -198,7 +239,7 @@ export function hydrateSeo(site, {
   const resolvedTitle = title || siteName;
   const resolvedDescription = description || site.seoDescription || site.intro || '';
   const canonical = site.siteUrl
-    ? (path === 'index.html' ? site.siteUrl.replace(/\/$/, '') + '/' : absoluteUrl(site, path || `${window.location.pathname}${window.location.search}`))
+    ? absoluteUrl(site, path || `${window.location.pathname}${window.location.search}`)
     : '';
   const resolvedImage = absoluteUrl(site, image || site.seoImage || '');
   const resolvedImageAlt = imageAlt || resolvedTitle;
@@ -290,7 +331,7 @@ export function hydrateProjectSchema(site, project) {
 }
 
 export function projectUrl(project) {
-  return `project.html?slug=${encodeURIComponent(project.slug)}`;
+  return `/work/${encodeURIComponent(project.slug)}/`;
 }
 
 export function escapeHtml(value = '') {
