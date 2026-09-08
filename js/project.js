@@ -23,12 +23,48 @@ const lightboxClose = document.querySelector('[data-lightbox-close]');
 const lightboxPrev = document.querySelector('[data-lightbox-prev]');
 const lightboxNext = document.querySelector('[data-lightbox-next]');
 
+const MEDIA_FADE_MS = 180;
+const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+const mediaSwapTokens = new WeakMap();
+
 function mediaMarkup(item, title, { lightbox = false } = {}) {
   if (mediaKind(item) === 'video') {
     const poster = item.poster ? ` poster="${escapeHtml(item.poster)}"` : '';
     return `<video src="${escapeHtml(item.src)}"${poster} controls playsinline preload="metadata" ${lightbox ? 'autoplay' : ''}></video>`;
   }
   return `<img src="${escapeHtml(item.src)}" alt="${escapeHtml(item.alt || title)}">`;
+}
+
+function replaceMedia(container, markup, { animate = false } = {}) {
+  const token = (mediaSwapTokens.get(container) || 0) + 1;
+  mediaSwapTokens.set(container, token);
+
+  if (!animate || prefersReducedMotion.matches || !container.firstElementChild) {
+    container.classList.remove('is-media-faded');
+    container.innerHTML = markup;
+    return;
+  }
+
+  container.classList.add('is-media-faded');
+
+  window.setTimeout(() => {
+    if (mediaSwapTokens.get(container) !== token) return;
+
+    container.innerHTML = markup;
+    void container.offsetWidth;
+
+    requestAnimationFrame(() => {
+      if (mediaSwapTokens.get(container) === token) {
+        container.classList.remove('is-media-faded');
+      }
+    });
+  }, MEDIA_FADE_MS);
+}
+
+function clearMedia(container) {
+  mediaSwapTokens.set(container, (mediaSwapTokens.get(container) || 0) + 1);
+  container.classList.remove('is-media-faded');
+  container.innerHTML = '';
 }
 
 function projectHeadline(project) {
@@ -93,8 +129,8 @@ try {
   let activeIndex = 0;
   let previousFocus = null;
 
-  function renderStage() {
-    stage.innerHTML = mediaMarkup(media[activeIndex], project.title);
+  function renderStage({ animate = false } = {}) {
+    replaceMedia(stage, mediaMarkup(media[activeIndex], project.title), { animate });
     const imageIsActive = mediaKind(media[activeIndex]) === 'image';
     stage.classList.toggle('is-clickable', imageIsActive);
     stage.setAttribute('tabindex', imageIsActive ? '0' : '-1');
@@ -105,15 +141,19 @@ try {
     `;
   }
 
-  function changeIndex(direction) {
-    activeIndex = (activeIndex + direction + media.length) % media.length;
-    renderStage();
-    if (!lightbox.hidden) renderLightbox();
+  function renderLightbox({ animate = false } = {}) {
+    replaceMedia(
+      lightboxStage,
+      mediaMarkup(media[activeIndex], project.title, { lightbox: true }),
+      { animate }
+    );
+    lightboxCounter.textContent = `${String(activeIndex + 1).padStart(2, '0')} / ${String(media.length).padStart(2, '0')}`;
   }
 
-  function renderLightbox() {
-    lightboxStage.innerHTML = mediaMarkup(media[activeIndex], project.title, { lightbox: true });
-    lightboxCounter.textContent = `${String(activeIndex + 1).padStart(2, '0')} / ${String(media.length).padStart(2, '0')}`;
+  function changeIndex(direction) {
+    activeIndex = (activeIndex + direction + media.length) % media.length;
+    renderStage({ animate: true });
+    if (!lightbox.hidden) renderLightbox({ animate: true });
   }
 
   function openLightbox() {
@@ -129,7 +169,7 @@ try {
     lightbox.hidden = true;
     lightbox.setAttribute('aria-hidden', 'true');
     document.body.classList.remove('is-lightbox-open');
-    lightboxStage.innerHTML = '';
+    clearMedia(lightboxStage);
     if (previousFocus && typeof previousFocus.focus === 'function') previousFocus.focus();
   }
 
