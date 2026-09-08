@@ -8,7 +8,7 @@ import {
   escapeHtml,
   mediaKind,
   revealPage
-} from './site.js';
+} from './site.js?v=20260908-2';
 
 const params = new URLSearchParams(window.location.search);
 const slug = params.get('slug');
@@ -47,6 +47,10 @@ function descriptionParagraphs(value = '') {
 }
 
 try {
+  if (!stage || !controls || !header || !copy || !lightbox || !lightboxStage || !lightboxCounter || !lightboxClose || !lightboxPrev || !lightboxNext) {
+    throw new Error('Project layout could not initialize. Refresh the page to load the latest version.');
+  }
+
   const [projects, site] = await Promise.all([loadProjects(), loadSite()]);
   hydrateHeader(site);
 
@@ -72,8 +76,9 @@ try {
 
   function renderStage() {
     stage.innerHTML = mediaMarkup(media[activeIndex], project.title);
-    stage.classList.toggle('is-clickable', mediaKind(media[activeIndex]) === 'image');
-    stage.setAttribute('tabindex', mediaKind(media[activeIndex]) === 'image' ? '0' : '-1');
+    const imageIsActive = mediaKind(media[activeIndex]) === 'image';
+    stage.classList.toggle('is-clickable', imageIsActive);
+    stage.setAttribute('tabindex', imageIsActive ? '0' : '-1');
     controls.innerHTML = `
       <button type="button" data-gallery-prev aria-label="Previous media">&lt;</button>
       <span>${String(activeIndex + 1).padStart(2, '0')} of ${String(media.length).padStart(2, '0')}</span>
@@ -169,6 +174,6 @@ try {
   renderStage();
   await revealPage({ imagesWithin: stage });
 } catch (error) {
-  stage.innerHTML = `<p class="empty-state">${escapeHtml(error.message)}</p>`;
+  if (stage) stage.innerHTML = `<p class="empty-state">${escapeHtml(error.message)}</p>`;
   await revealPage();
 }
