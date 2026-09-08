@@ -16,6 +16,10 @@ on:
       - 'tools/build_sitemap.py'
   workflow_dispatch:
 
+concurrency:
+  group: update-generated-routes
+  cancel-in-progress: true
+
 permissions:
   contents: write
 
