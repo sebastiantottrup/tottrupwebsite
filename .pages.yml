@@ -198,22 +198,51 @@ content:
         label: Professional title
         type: string
         description: "Optional. Used in Person structured data, e.g. Creative Director / Designer."
-      - name: resume
-        label: Experience
+      - name: professionalExperience
+        label: Professional Experience
         type: object
         list:
           collapsible:
             collapsed: true
-            summary: "{fields.period} : {fields.role}"
+            summary: "{fields.company} : {fields.period}"
         fields:
+          - name: company
+            label: Company
+            type: string
+            required: true
+          - name: companyUrl
+            label: Company URL
+            type: string
+            description: "Optional. Link the company name to its website or a relevant company page."
+          - name: skills
+            label: Skills
+            type: string
+            description: "Skills, responsibilities or capabilities used and developed in this experience."
           - name: period
             label: Period
             type: string
-          - name: role
-            label: Role
-            type: string
+      - name: personalExperience
+        label: Personal Experience
+        type: object
+        list:
+          collapsible:
+            collapsed: true
+            summary: "{fields.company} : {fields.period}"
+        fields:
           - name: company
-            label: Company
+            label: Company / Project
+            type: string
+            required: true
+          - name: companyUrl
+            label: Company / Project URL
+            type: string
+            description: "Optional. Link the name to its website or a relevant page."
+          - name: skills
+            label: Skills
+            type: string
+            description: "Skills, responsibilities or capabilities used and developed in this experience."
+          - name: period
+            label: Period
             type: string
       - name: instagram
         label: Instagram handle
