@@ -1,0 +1,277 @@
+/* Project detail layout — reference-based two-column presentation */
+
+.page--project {
+  height: min(var(--project-height), calc(100svh - 120px));
+  padding: 0;
+  overflow: hidden;
+}
+
+.project-detail {
+  width: 100%;
+  height: 100%;
+  display: grid;
+  grid-template-columns: minmax(0, 40%) minmax(0, 60%);
+  gap: 38px;
+  align-items: stretch;
+  padding: 28px 6px 8px 0;
+}
+
+.project-gallery-pane {
+  min-width: 0;
+  min-height: 0;
+  display: grid;
+  grid-template-rows: minmax(0, 1fr) auto;
+  gap: 16px;
+}
+
+.project-stage {
+  min-width: 0;
+  min-height: 0;
+  display: grid;
+  place-items: center;
+  background: #fff;
+  overflow: hidden;
+  outline: none;
+}
+
+.project-stage.is-clickable {
+  cursor: zoom-in;
+}
+
+.project-stage.is-clickable:focus-visible {
+  outline: 1px solid var(--text);
+  outline-offset: -1px;
+}
+
+.project-stage img,
+.project-stage video {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  background: #fff;
+}
+
+.project-gallery-controls {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  min-height: 18px;
+  white-space: nowrap;
+}
+
+.project-gallery-controls button,
+.project-lightbox button {
+  appearance: none;
+  border: 0;
+  padding: 0;
+  margin: 0;
+  background: transparent;
+  color: inherit;
+  font: inherit;
+  cursor: pointer;
+}
+
+.project-gallery-controls button:hover,
+.project-gallery-controls button:focus-visible,
+.project-lightbox button:hover,
+.project-lightbox button:focus-visible {
+  text-decoration: underline;
+  text-underline-offset: 2px;
+  outline: none;
+}
+
+.project-copy-pane {
+  min-width: 0;
+  min-height: 0;
+  display: grid;
+  grid-template-rows: auto minmax(0, 1fr);
+  gap: 24px;
+}
+
+.project-copy-header {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  column-gap: 20px;
+  row-gap: 4px;
+  align-items: baseline;
+}
+
+.project-copy-header h1,
+.project-copy-header p {
+  margin: 0;
+  font-size: inherit;
+  line-height: inherit;
+  font-weight: 400;
+}
+
+.project-title-main {
+  font-weight: 700;
+}
+
+.project-title-client,
+.project-year,
+.project-format {
+  font-weight: 400;
+}
+
+.project-format {
+  grid-column: 1 / -1;
+}
+
+.project-copy-scroll {
+  min-height: 0;
+  overflow-y: auto;
+  overflow-x: hidden;
+  padding-right: 10px;
+  scrollbar-width: thin;
+  scrollbar-color: var(--muted) transparent;
+}
+
+.project-copy-scroll::-webkit-scrollbar {
+  width: 7px;
+}
+
+.project-copy-scroll::-webkit-scrollbar-track {
+  background: transparent;
+  border: 1px solid var(--muted);
+}
+
+.project-copy-scroll::-webkit-scrollbar-thumb {
+  background: var(--muted);
+}
+
+.project-copy-body {
+  display: grid;
+  gap: 18px;
+  padding-bottom: 18px;
+}
+
+.project-copy-body p {
+  margin: 0;
+  white-space: pre-line;
+}
+
+.project-copy-meta {
+  display: grid;
+  gap: 4px;
+  margin-top: 8px;
+}
+
+.project-copy-meta p {
+  display: grid;
+  grid-template-columns: 58px minmax(0, 1fr);
+  gap: 8px;
+}
+
+.project-copy-meta span:first-child {
+  color: var(--muted);
+}
+
+/* Full-screen gallery */
+.project-lightbox {
+  position: fixed;
+  inset: 0;
+  z-index: 3000;
+  background: #fff;
+  color: var(--text);
+}
+
+.project-lightbox[hidden] {
+  display: none;
+}
+
+.project-lightbox__inner {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  display: grid;
+  place-items: center;
+  padding: 42px 74px 50px;
+}
+
+.project-lightbox__stage {
+  width: 100%;
+  height: 100%;
+  display: grid;
+  place-items: center;
+  min-width: 0;
+  min-height: 0;
+}
+
+.project-lightbox__stage img,
+.project-lightbox__stage video {
+  max-width: 100%;
+  max-height: 100%;
+  width: auto;
+  height: auto;
+  object-fit: contain;
+  background: #fff;
+}
+
+.project-lightbox__close {
+  position: absolute;
+  top: 18px;
+  right: 22px;
+}
+
+.project-lightbox__prev,
+.project-lightbox__next {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  padding: 18px !important;
+}
+
+.project-lightbox__prev { left: 8px; }
+.project-lightbox__next { right: 8px; }
+
+.project-lightbox__counter {
+  position: absolute;
+  bottom: 18px;
+  left: 50%;
+  transform: translateX(-50%);
+  white-space: nowrap;
+}
+
+body.is-lightbox-open {
+  overflow: hidden;
+}
+
+@media (max-width: 700px) {
+  .page--project {
+    height: auto;
+    max-height: none;
+    overflow: visible;
+  }
+
+  .project-detail {
+    height: auto;
+    grid-template-columns: 1fr;
+    gap: 24px;
+    padding: 0;
+  }
+
+  .project-gallery-pane {
+    grid-template-rows: auto auto;
+  }
+
+  .project-stage {
+    height: min(78vw, 420px);
+  }
+
+  .project-copy-pane {
+    display: grid;
+    grid-template-rows: auto auto;
+    gap: 18px;
+  }
+
+  .project-copy-scroll {
+    overflow: visible;
+    padding-right: 0;
+  }
+
+  .project-lightbox__inner {
+    padding: 46px 34px 48px;
+  }
+}
