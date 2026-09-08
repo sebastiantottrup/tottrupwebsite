@@ -17,6 +17,7 @@
   <title>Project — Sebastian Tottrup</title>
   <script>document.documentElement.classList.replace('no-js', 'js');</script>
   <link rel="stylesheet" href="css/styles.css">
+  <link rel="stylesheet" href="css/project.css">
 </head>
 <body data-page-state="loading">
   <div class="site-loader" aria-live="polite" aria-label="Loading">
@@ -25,11 +26,19 @@
 
   <div class="site-shell">
     <main class="page page--project">
-      <div class="project-layout">
-        <section class="project-stage" data-project-stage aria-live="polite"></section>
-        <aside class="project-thumbs" data-project-thumbs aria-label="Project media"></aside>
-      </div>
-      <section class="project-info" data-project-info></section>
+      <section class="project-detail" data-project-detail>
+        <div class="project-gallery-pane">
+          <div class="project-stage" data-project-stage aria-live="polite"></div>
+          <div class="project-gallery-controls" data-project-controls aria-label="Project gallery controls"></div>
+        </div>
+
+        <article class="project-copy-pane">
+          <header class="project-copy-header" data-project-header></header>
+          <div class="project-copy-scroll" tabindex="0" aria-label="Project description">
+            <div class="project-copy-body" data-project-copy></div>
+          </div>
+        </article>
+      </section>
     </main>
 
     <footer class="site-footer">
@@ -43,6 +52,16 @@
       <div></div>
       <div class="footer-copyright" data-copyright>Sebastian Tottrup © 2026</div>
     </footer>
+  </div>
+
+  <div class="project-lightbox" data-project-lightbox hidden aria-hidden="true" role="dialog" aria-modal="true" aria-label="Full screen project gallery">
+    <div class="project-lightbox__inner">
+      <button class="project-lightbox__close" type="button" data-lightbox-close aria-label="Close gallery">Close</button>
+      <button class="project-lightbox__prev" type="button" data-lightbox-prev aria-label="Previous image">&lt;</button>
+      <div class="project-lightbox__stage" data-lightbox-stage></div>
+      <button class="project-lightbox__next" type="button" data-lightbox-next aria-label="Next image">&gt;</button>
+      <div class="project-lightbox__counter" data-lightbox-counter></div>
+    </div>
   </div>
 
   <script type="module" src="js/project.js"></script>
