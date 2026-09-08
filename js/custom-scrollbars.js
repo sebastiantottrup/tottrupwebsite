@@ -25,6 +25,10 @@
     let dragStartY = 0;
     let dragStartScrollTop = 0;
 
+    function clamp(value, min, max) {
+      return Math.min(max, Math.max(min, value));
+    }
+
     function metrics() {
       const viewport = target.clientHeight;
       const content = target.scrollHeight;
@@ -42,13 +46,17 @@
       track.style.top = `${target.offsetTop}px`;
       track.style.height = `${viewport}px`;
 
-      /* Do not draw a fake scrollbar when there is nothing to scroll. */
       track.hidden = maxScroll <= 1 || viewport <= 0;
       if (track.hidden) return;
 
-      const ratio = maxScroll ? target.scrollTop / maxScroll : 0;
+      /* Safari can briefly report negative / beyond-max scrollTop while
+         rubber-banding. Clamp the visual thumb so it never leaves the track. */
+      const safeScrollTop = clamp(target.scrollTop, 0, maxScroll);
+      const ratio = maxScroll ? safeScrollTop / maxScroll : 0;
+      const thumbTop = clamp(Math.round(ratio * maxThumbTravel), 0, maxThumbTravel);
+
       thumb.style.height = `${thumbHeight}px`;
-      thumb.style.transform = `translateY(${Math.round(ratio * maxThumbTravel)}px)`;
+      thumb.style.transform = `translateY(${thumbTop}px)`;
     }
 
     target.addEventListener('scroll', update, { passive: true });
@@ -60,17 +68,15 @@
       const { thumbHeight, maxScroll, maxThumbTravel } = metrics();
       if (!maxScroll || !maxThumbTravel) return;
 
-      const desiredTop = Math.max(
-        0,
-        Math.min(maxThumbTravel, event.clientY - rect.top - thumbHeight / 2)
-      );
-      target.scrollTop = (desiredTop / maxThumbTravel) * maxScroll;
+      const desiredTop = clamp(event.clientY - rect.top - thumbHeight / 2, 0, maxThumbTravel);
+      target.scrollTop = clamp((desiredTop / maxThumbTravel) * maxScroll, 0, maxScroll);
     });
 
     thumb.addEventListener('pointerdown', event => {
       dragging = true;
       dragStartY = event.clientY;
-      dragStartScrollTop = target.scrollTop;
+      const { maxScroll } = metrics();
+      dragStartScrollTop = clamp(target.scrollTop, 0, maxScroll);
       thumb.setPointerCapture(event.pointerId);
       event.preventDefault();
     });
@@ -81,13 +87,15 @@
       if (!maxScroll || !maxThumbTravel) return;
 
       const deltaY = event.clientY - dragStartY;
-      target.scrollTop = dragStartScrollTop + (deltaY / maxThumbTravel) * maxScroll;
+      const nextScrollTop = dragStartScrollTop + (deltaY / maxThumbTravel) * maxScroll;
+      target.scrollTop = clamp(nextScrollTop, 0, maxScroll);
     });
 
     const stopDragging = event => {
       if (!dragging) return;
       dragging = false;
       try { thumb.releasePointerCapture(event.pointerId); } catch (_) {}
+      update();
     };
 
     thumb.addEventListener('pointerup', stopDragging);
