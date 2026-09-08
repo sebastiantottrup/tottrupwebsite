@@ -31,10 +31,15 @@ function mediaMarkup(item, title, { lightbox = false } = {}) {
   return `<img src="${escapeHtml(item.src)}" alt="${escapeHtml(item.alt || title)}">`;
 }
 
-function titleWithClient(project) {
-  const client = project.client || project.brand || '';
-  if (!client) return `<span class="project-title-main">${escapeHtml(project.title)}</span>`;
-  return `<span class="project-title-main">${escapeHtml(project.title)}</span> <span class="project-title-client">for ${escapeHtml(client)}</span>`;
+function projectHeadline(project) {
+  const brand = project.brand || project.client || '';
+  const year = project.year ? String(project.year) : '';
+  const afterTitle = [brand ? `for ${brand}` : '', year].filter(Boolean).join(' ');
+
+  return `
+    <span class="project-title-main">${escapeHtml(project.title)}</span>
+    ${afterTitle ? ` <span class="project-title-client">${escapeHtml(afterTitle)}</span>` : ''}
+  `;
 }
 
 function descriptionParagraphs(value = '') {
@@ -151,8 +156,7 @@ try {
   });
 
   header.innerHTML = `
-    <h1>${titleWithClient(project)}</h1>
-    <p class="project-year">${escapeHtml(project.year || '')}</p>
+    <h1>${projectHeadline(project)}</h1>
     ${project.format ? `<p class="project-format">${escapeHtml(project.format)}</p>` : ''}
   `;
 
