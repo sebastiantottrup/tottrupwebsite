@@ -16,6 +16,11 @@
       "media": [
         {
           "type": "image",
+          "src": "assets/uploads/dsc00602-1.jpg",
+          "alt": "CeramicSpeed_AlphaWheelBearings_000"
+        },
+        {
+          "type": "image",
           "src": "assets/uploads/dsc00871.jpg",
           "alt": "CeramicSpeed_AlphaWheelBearings_001"
         },
