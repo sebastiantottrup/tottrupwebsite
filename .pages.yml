@@ -191,9 +191,6 @@ content:
           - name: company
             label: Company
             type: string
-      - name: email
-        label: Email
-        type: string
       - name: instagram
         label: Instagram handle
         type: string
