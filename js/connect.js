@@ -1,4 +1,4 @@
-import { loadSite, hydrateChrome, hydrateSeo, hydratePersonSchema, escapeHtml, revealPage } from './site.js';
+import { loadSite, hydrateChrome, hydrateSeo, hydratePersonSchema, escapeHtml, revealPage } from './site.js?v=20260908-3';
 
 const page = document.querySelector('[data-connect]');
 
@@ -11,10 +11,11 @@ try {
   const site = await loadSite();
   hydrateChrome(site);
   hydrateSeo(site, {
-    title: `Connect — ${site.name || 'Portfolio'}`,
-    description: `Contact and social links for ${site.name || 'the portfolio owner'}.`,
+    title: site.connectSeoTitle || `Connect — ${site.name || 'Sebastian Tottrup'}`,
+    description: site.connectSeoDescription || `Contact and social links for ${site.name || 'Sebastian Tottrup'}.`,
     path: 'connect.html',
-    image: site.seoImage,
+    image: site.profileImage || site.seoImage,
+    imageAlt: `${site.name || 'Sebastian Tottrup'} profile`,
     type: 'profile'
   });
   hydratePersonSchema(site);
@@ -48,8 +49,6 @@ try {
 
   const emailButton = page.querySelector('[data-email-reveal]');
   const emailValue = page.querySelector('[data-email-value]');
-  // The address is encoded and only reconstructed after a deliberate click.
-  // This avoids exposing a plain-text email address to basic crawl/scrape bots.
   const protectedEmailParts = ['c2ViYXN0aWFudG90dHJ1cA==', 'Z21haWwuY29t'];
   let emailRevealed = false;
   emailButton?.addEventListener('click', event => {
