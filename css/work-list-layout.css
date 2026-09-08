@@ -1,0 +1,33 @@
+/* Work list column spacing */
+.work-list {
+  width: 100%;
+  min-width: 640px;
+}
+
+.work-list__header,
+.work-list__row {
+  grid-template-columns:
+    minmax(240px, 2fr)
+    minmax(120px, .85fr)
+    minmax(170px, 1.2fr)
+    50px;
+  column-gap: 18px;
+}
+
+.work-list__header > span,
+.work-list__row > span {
+  min-width: 0;
+}
+
+.work-list__header > span:nth-child(2),
+.work-list__row > span:nth-child(2),
+.work-list__header > span:nth-child(3),
+.work-list__row > span:nth-child(3) {
+  padding-right: 8px;
+}
+
+@media (max-width: 700px) {
+  .work-list {
+    min-width: 720px;
+  }
+}
