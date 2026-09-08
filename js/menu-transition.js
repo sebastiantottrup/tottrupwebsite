@@ -68,6 +68,10 @@
     const link = event.target.closest('a[href]');
     if (!isInternalNavigation(link, event)) return;
 
+    // Mobile navigation is fixed to the viewport, so it should never slide
+    // when moving between Home and the taller content pages.
+    if (window.matchMedia('(max-width: 700px)').matches) return;
+
     const fromHome = currentIsHome();
     const toHome = targetIsHome(link);
 
