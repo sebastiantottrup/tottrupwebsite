@@ -102,7 +102,7 @@ export function hydrateChrome(site) {
     const currentYear = new Date().getFullYear();
     const startYear = Number(site.copyrightStartYear || 0);
     const years = startYear && startYear < currentYear
-      ? `${startYear}–${currentYear}`
+      ? `${startYear}-${currentYear}`
       : `${currentYear}`;
     const copyright = `${site.name || 'YOUR NAME'} © ${years}`;
     const credit = site.siteCredit || `Site design + development — ${site.name || 'YOUR NAME'} / ${currentYear}`;
@@ -123,6 +123,11 @@ export function hydrateChrome(site) {
     const popover = element.querySelector('.site-credit-popover');
     label.textContent = copyright;
     popover.textContent = credit;
+
+    // Keep the hidden site-credit note below the footer/menu rather than above it.
+    popover.style.top = 'calc(100% + 8px)';
+    popover.style.bottom = 'auto';
+    popover.style.zIndex = '100';
 
     const setOpen = open => {
       element.classList.toggle('is-open', open);
