@@ -95,7 +95,7 @@ export async function revealPage({ imagesWithin = null } = {}) {
 
 export function hydrateChrome(site) {
   document.querySelectorAll('[data-site-name]').forEach(element => {
-    element.textContent = site.name || 'YOUR NAME';
+    element.textContent = site.name || 'Sebastian Tottrup';
   });
 
   document.querySelectorAll('[data-copyright]').forEach((element, index) => {
@@ -104,8 +104,8 @@ export function hydrateChrome(site) {
     const years = startYear && startYear < currentYear
       ? `${startYear}-${currentYear}`
       : `${currentYear}`;
-    const copyright = `${site.name || 'YOUR NAME'} © ${years}`;
-    const credit = site.siteCredit || `Site design + development — ${site.name || 'YOUR NAME'} / ${currentYear}`;
+    const copyright = `${site.name || 'Sebastian Tottrup'} © ${years}`;
+    const credit = site.siteCredit || `Site design + development — ${site.name || 'Sebastian Tottrup'} / ${currentYear}`;
     const creditId = `site-credit-${index + 1}`;
 
     element.classList.add('site-credit-trigger');
@@ -124,7 +124,6 @@ export function hydrateChrome(site) {
     label.textContent = copyright;
     popover.textContent = credit;
 
-    // Keep the hidden site-credit note below the footer/menu rather than above it.
     popover.style.top = 'calc(100% + 8px)';
     popover.style.bottom = 'auto';
     popover.style.zIndex = '100';
@@ -191,16 +190,18 @@ export function hydrateSeo(site, {
   description,
   path = '',
   image = '',
+  imageAlt = '',
   type = 'website',
   robots = 'index,follow,max-image-preview:large'
 } = {}) {
-  const siteName = site.name || 'Portfolio';
+  const siteName = site.name || 'Sebastian Tottrup';
   const resolvedTitle = title || siteName;
   const resolvedDescription = description || site.seoDescription || site.intro || '';
   const canonical = site.siteUrl
-    ? absoluteUrl(site, path || `${window.location.pathname}${window.location.search}`)
+    ? (path === 'index.html' ? site.siteUrl.replace(/\/$/, '') + '/' : absoluteUrl(site, path || `${window.location.pathname}${window.location.search}`))
     : '';
   const resolvedImage = absoluteUrl(site, image || site.seoImage || '');
+  const resolvedImageAlt = imageAlt || resolvedTitle;
 
   document.title = resolvedTitle;
   ensureMeta('meta[name="description"]', { name: 'description', content: resolvedDescription });
@@ -217,9 +218,12 @@ export function hydrateSeo(site, {
     ensureLink('canonical').href = canonical;
     ensureMeta('meta[property="og:url"]', { property: 'og:url', content: canonical });
   }
+
   if (resolvedImage) {
     ensureMeta('meta[property="og:image"]', { property: 'og:image', content: resolvedImage });
+    ensureMeta('meta[property="og:image:alt"]', { property: 'og:image:alt', content: resolvedImageAlt });
     ensureMeta('meta[name="twitter:image"]', { name: 'twitter:image', content: resolvedImage });
+    ensureMeta('meta[name="twitter:image:alt"]', { name: 'twitter:image:alt', content: resolvedImageAlt });
   }
 }
 
@@ -241,13 +245,15 @@ export function hydratePersonSchema(site) {
   if (site.linkedin) sameAs.push(site.linkedin);
   if (site.website) sameAs.push(site.website);
 
+  const profileImage = absoluteUrl(site, site.profileImage || '');
   const data = {
     '@context': 'https://schema.org',
     '@type': 'Person',
-    name: site.name || 'Portfolio owner',
+    name: site.name || 'Sebastian Tottrup',
     description: site.seoDescription || site.intro || undefined,
     url: site.siteUrl || undefined,
-    email: site.email ? `mailto:${site.email}` : undefined,
+    image: profileImage || undefined,
+    jobTitle: site.jobTitle || undefined,
     sameAs: sameAs.length ? sameAs : undefined,
     homeLocation: site.location ? {
       '@type': 'Place',
@@ -270,7 +276,8 @@ export function hydrateProjectSchema(site, project) {
     dateCreated: project.year ? String(project.year) : undefined,
     creator: {
       '@type': 'Person',
-      name: site.name || 'Portfolio owner'
+      name: site.name || 'Sebastian Tottrup',
+      url: site.siteUrl || undefined
     },
     image: image || undefined,
     url: canonical,
@@ -278,6 +285,7 @@ export function hydrateProjectSchema(site, project) {
     about: project.brand || project.client || undefined
   };
   Object.keys(data).forEach(key => data[key] === undefined && delete data[key]);
+  if (data.creator.url === undefined) delete data.creator.url;
   injectJsonLd('project-schema', data);
 }
 
