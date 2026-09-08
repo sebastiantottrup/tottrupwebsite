@@ -211,6 +211,17 @@
           "alt": "Project Nine"
         }
       ]
+    },
+    {
+      "slug": "vacwm",
+      "year": 2018,
+      "title": "VACWM",
+      "featured": false,
+      "thumbnail": "assets/uploads/dsc01148.jpg",
+      "format": "Brand Development",
+      "brand": "Personal",
+      "client": "Sebastian Tottrup",
+      "role": "Creative Direction, Brand Design, Product Design"
     }
   ]
 }
