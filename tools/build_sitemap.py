@@ -10,8 +10,11 @@ site = json.loads((ROOT / 'content/site.json').read_text())
 projects = json.loads((ROOT / 'content/projects.json').read_text()).get('projects', [])
 base = str(site.get('siteUrl', '')).strip().rstrip('/')
 
+# The repository is usable before a final domain is chosen. Skip cleanly until
+# the CMS field "Live site URL" has been populated.
 if not base.startswith(('https://', 'http://')):
-    raise SystemExit('Set content/site.json -> siteUrl to the live https:// URL first.')
+    print('Sitemap skipped: set content/site.json -> siteUrl to the final live URL first.')
+    raise SystemExit(0)
 
 urls = [
     f'{base}/',
