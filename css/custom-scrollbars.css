@@ -1,0 +1,53 @@
+/* Custom portfolio scrollbars — flat grey/white graphic treatment */
+
+.work-page,
+.project-copy-scroll {
+  scrollbar-width: auto;
+  scrollbar-color: #7b7b7b #ffffff;
+  scrollbar-gutter: stable;
+}
+
+/* Safari / Chrome / Edge */
+.work-page::-webkit-scrollbar,
+.project-copy-scroll::-webkit-scrollbar {
+  width: 12px;
+}
+
+.work-page::-webkit-scrollbar-track,
+.project-copy-scroll::-webkit-scrollbar-track {
+  background: #ffffff;
+  border: 1px solid #7b7b7b;
+  border-radius: 0;
+}
+
+.work-page::-webkit-scrollbar-thumb,
+.project-copy-scroll::-webkit-scrollbar-thumb {
+  background: #7b7b7b;
+  border: 1px solid #7b7b7b;
+  border-radius: 0;
+  min-height: 42px;
+}
+
+.work-page::-webkit-scrollbar-button,
+.project-copy-scroll::-webkit-scrollbar-button {
+  display: none;
+  width: 0;
+  height: 0;
+}
+
+.work-page::-webkit-scrollbar-corner,
+.project-copy-scroll::-webkit-scrollbar-corner {
+  background: transparent;
+}
+
+/* Keep the project copy comfortably separated from the graphic. */
+.project-copy-scroll {
+  padding-right: 12px;
+}
+
+@media (max-width: 700px) {
+  /* Project copy becomes a normal document flow on mobile. */
+  .project-copy-scroll {
+    padding-right: 0;
+  }
+}
