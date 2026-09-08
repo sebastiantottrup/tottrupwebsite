@@ -112,12 +112,13 @@
   font-weight: 400;
 }
 
-.project-title-main {
+.project-title-main,
+.project-title-brand {
   font-weight: 700;
 }
 
-.project-title-client,
-.project-year,
+.project-title-prefix,
+.project-title-year,
 .project-format {
   font-weight: 400;
 }
@@ -197,9 +198,6 @@
   height: 100%;
 }
 
-/* Fixed directly to the viewport rather than to an inner wrapper.
-   This keeps the media geometrically centered even in Safari and
-   regardless of the body's centered grid/padding. */
 .project-lightbox__stage {
   position: fixed;
   top: 50dvh;
