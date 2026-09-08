@@ -34,11 +34,11 @@ function mediaMarkup(item, title, { lightbox = false } = {}) {
 function projectHeadline(project) {
   const brand = project.brand || project.client || '';
   const year = project.year ? String(project.year) : '';
-  const afterTitle = [brand ? `for ${brand}` : '', year].filter(Boolean).join(' ');
 
   return `
     <span class="project-title-main">${escapeHtml(project.title)}</span>
-    ${afterTitle ? ` <span class="project-title-client">${escapeHtml(afterTitle)}</span>` : ''}
+    ${brand ? ` <span class="project-title-prefix">for </span><span class="project-title-brand">${escapeHtml(brand)}</span>` : ''}
+    ${year ? ` <span class="project-title-year">${escapeHtml(year)}</span>` : ''}
   `;
 }
 
