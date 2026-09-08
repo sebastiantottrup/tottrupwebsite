@@ -8,7 +8,7 @@ import {
   escapeHtml,
   sortProjects,
   revealPage
-} from './site.js';
+} from './site.js?v=20260908-3';
 
 const list = document.querySelector('[data-work-list]');
 const grid = document.querySelector('[data-work-grid]');
@@ -72,10 +72,11 @@ try {
   const [projects, site] = await Promise.all([loadProjects(), loadSite()]);
   hydrateChrome(site);
   hydrateSeo(site, {
-    title: `Work — ${site.name || 'Portfolio'}`,
-    description: `Selected personal and professional projects by ${site.name || 'the portfolio owner'}.`,
+    title: site.workSeoTitle || `Work — ${site.name || 'Sebastian Tottrup'}`,
+    description: site.workSeoDescription || `Selected personal and professional projects by ${site.name || 'Sebastian Tottrup'}.`,
     path: 'work.html',
-    image: site.seoImage,
+    image: site.seoImage || projects[0]?.thumbnail,
+    imageAlt: `${site.name || 'Sebastian Tottrup'} — selected work`,
     type: 'website'
   });
   hydratePersonSchema(site);
