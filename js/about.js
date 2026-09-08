@@ -1,4 +1,4 @@
-import { loadSite, hydrateChrome, hydrateSeo, hydratePersonSchema, escapeHtml, revealPage } from './site.js';
+import { loadSite, hydrateChrome, hydrateSeo, hydratePersonSchema, escapeHtml, revealPage } from './site.js?v=20260908-3';
 
 const page = document.querySelector('[data-about]');
 
@@ -6,10 +6,11 @@ try {
   const site = await loadSite();
   hydrateChrome(site);
   hydrateSeo(site, {
-    title: `About — ${site.name || 'Portfolio'}`,
-    description: site.aboutSeoDescription || site.about || site.intro || `About ${site.name || 'the portfolio owner'}.`,
+    title: site.aboutSeoTitle || `About — ${site.name || 'Sebastian Tottrup'}`,
+    description: site.aboutSeoDescription || site.about || site.intro || `About ${site.name || 'Sebastian Tottrup'}.`,
     path: 'about.html',
-    image: site.seoImage,
+    image: site.profileImage || site.seoImage,
+    imageAlt: `${site.name || 'Sebastian Tottrup'} profile`,
     type: 'profile'
   });
   hydratePersonSchema(site);
@@ -24,7 +25,7 @@ try {
 
   page.innerHTML = `
     <section class="about-intro">
-      <h1>${escapeHtml(site.name || 'YOUR NAME')}</h1>
+      <h1>${escapeHtml(site.name || 'Sebastian Tottrup')}</h1>
       ${site.intro ? `<p>${escapeHtml(site.intro)}</p>` : ''}
       ${site.location ? `<p class="muted">${escapeHtml(site.location)}</p>` : ''}
     </section>
