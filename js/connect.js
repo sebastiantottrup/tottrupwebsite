@@ -1,4 +1,4 @@
-import { loadSite, hydrateChrome, hydrateSeo, hydratePersonSchema, escapeHtml, revealPage } from './site.js?v=20260908-3';
+import { loadSite, hydrateChrome, hydrateSeo, hydratePersonSchema, escapeHtml, revealPage } from './site.js?v=20260908-4';
 
 const page = document.querySelector('[data-connect]');
 
@@ -13,7 +13,7 @@ try {
   hydrateSeo(site, {
     title: site.connectSeoTitle || `Connect — ${site.name || 'Sebastian Tottrup'}`,
     description: site.connectSeoDescription || `Contact and social links for ${site.name || 'Sebastian Tottrup'}.`,
-    path: 'connect.html',
+    path: '/connect/',
     image: site.profileImage || site.seoImage,
     imageAlt: `${site.name || 'Sebastian Tottrup'} profile`,
     type: 'profile'
