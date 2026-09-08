@@ -6,6 +6,13 @@ on:
     paths:
       - 'content/site.json'
       - 'content/projects.json'
+      - 'index.html'
+      - 'work.html'
+      - 'about.html'
+      - 'connect.html'
+      - 'random.html'
+      - 'project.html'
+      - 'tools/build_routes.py'
       - 'tools/build_sitemap.py'
   workflow_dispatch:
 
@@ -21,18 +28,21 @@ jobs:
         with:
           ref: delete
 
+      - name: Generate clean routes
+        run: python tools/build_routes.py
+
       - name: Generate sitemap and robots
         run: python tools/build_sitemap.py
 
-      - name: Commit generated SEO files
+      - name: Commit generated routes and SEO files
         shell: bash
         run: |
-          if git diff --quiet -- sitemap.xml robots.txt; then
-            echo "No generated SEO changes."
+          if [ -z "$(git status --porcelain -- sitemap.xml robots.txt work about connect random)" ]; then
+            echo "No generated route or SEO changes."
             exit 0
           fi
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add sitemap.xml robots.txt
-          git commit -m "seo: update sitemap and robots"
+          git add sitemap.xml robots.txt work about connect random
+          git commit -m "build: update clean routes and SEO files"
           git push
