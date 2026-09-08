@@ -20,7 +20,6 @@ try {
   hydratePersonSchema(site);
 
   const links = [];
-  if (site.email) links.push({ label: 'Email', value: site.email, href: `mailto:${site.email}`, external: false });
   if (site.instagram) {
     const handle = site.instagram.replace(/^@/, '');
     links.push({ label: 'Instagram', value: `@${handle}`, href: `https://instagram.com/${handle}`, external: true });
@@ -33,15 +32,36 @@ try {
     <section>
       <h1>Connect</h1>
       <div class="connect-list">
+        <button class="connect-row connect-row--button" type="button" data-email-reveal>
+          <span>Email</span>
+          <span data-email-value>Click to reveal</span>
+        </button>
         ${links.map(link => `
           <a class="connect-row" href="${escapeHtml(link.href)}" ${link.external ? 'target="_blank" rel="noreferrer"' : ''}>
             <span>${escapeHtml(link.label)}</span>
             <span>${escapeHtml(link.value)}</span>
           </a>
-        `).join('') || '<p class="empty-state">Add links in the CMS.</p>'}
+        `).join('')}
       </div>
     </section>
   `;
+
+  const emailButton = page.querySelector('[data-email-reveal]');
+  const emailValue = page.querySelector('[data-email-value]');
+  // The address is encoded and only reconstructed after a deliberate click.
+  // This avoids exposing a plain-text email address to basic crawl/scrape bots.
+  const protectedEmailParts = ['c2ViYXN0aWFudG90dHJ1cA==', 'Z21haWwuY29t'];
+  let emailRevealed = false;
+  emailButton?.addEventListener('click', () => {
+    const email = protectedEmailParts.map(part => atob(part)).join('@');
+    if (!emailRevealed) {
+      emailRevealed = true;
+      emailValue.textContent = email;
+      emailButton.setAttribute('aria-label', `Email ${email}. Click again to compose.`);
+      return;
+    }
+    window.location.href = `mailto:${email}`;
+  });
 
   await revealPage();
 } catch (error) {
