@@ -1,6 +1,6 @@
 media:
   input: assets/uploads
-  output: /assets/uploads
+  output: assets/uploads
   rename: safe
 
 settings:
