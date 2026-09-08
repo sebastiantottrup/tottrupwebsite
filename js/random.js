@@ -6,7 +6,7 @@ import {
   projectUrl,
   escapeHtml,
   revealPage
-} from './site.js?v=20260908-3';
+} from './site.js?v=20260908-4';
 
 const status = document.querySelector('[data-random-status]');
 
@@ -16,7 +16,7 @@ try {
   hydrateSeo(site, {
     title: `Random — ${site.name || 'Sebastian Tottrup'}`,
     description: 'Random project selection.',
-    path: 'random.html',
+    path: '/random/',
     robots: 'noindex,follow'
   });
 
