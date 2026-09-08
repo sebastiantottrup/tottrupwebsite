@@ -57,6 +57,22 @@ content:
             type: image
             required: true
             description: "Used on Home, Work Grid and the 1:1 Work List hover preview."
+          - name: thumbnailAlt
+            label: Thumbnail alt text
+            type: string
+            description: "Short visual description for accessibility and image SEO."
+          - name: seoTitle
+            label: SEO title
+            type: string
+            description: "Optional. Leave blank to use Project Title — Site Name."
+          - name: seoDescription
+            label: SEO description
+            type: text
+            description: "Optional 140–160 character search/social description. Falls back to the project description."
+          - name: seoImage
+            label: SEO / social share image
+            type: image
+            description: "Optional. Falls back to the project thumbnail."
           - name: format
             label: Format
             type: string
@@ -121,6 +137,22 @@ content:
         label: Name
         type: string
         required: true
+      - name: siteUrl
+        label: Live site URL
+        type: string
+        description: "Full public URL, e.g. https://yourname.com. Enables canonical URLs and absolute social-share images."
+      - name: seoTitle
+        label: Homepage SEO title
+        type: string
+        description: "Recommended: Name — Portfolio or Name — Creative / Cycling / Brand Projects."
+      - name: seoDescription
+        label: Homepage SEO description
+        type: text
+        description: "A concise 140–160 character description of the portfolio."
+      - name: seoImage
+        label: Default social share image
+        type: image
+        description: "Used by Open Graph / social sharing when a project-specific image is not set."
       - name: copyrightStartYear
         label: Copyright start year
         type: number
@@ -135,6 +167,10 @@ content:
       - name: about
         label: Story / background
         type: text
+      - name: aboutSeoDescription
+        label: About page SEO description
+        type: text
+        description: "Short description used by search engines and social previews for the About page."
       - name: location
         label: Location
         type: string

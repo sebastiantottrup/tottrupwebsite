@@ -9,7 +9,7 @@ Copy your two `.ttf` files into `assets/fonts/` and make sure they are named exa
 - `PixelArial11-Regular.TTF`
 - `PixelArial11-Bold.TTF`
 
-The site uses Regular as its default weight and Bold for active navigation, headings, Work table headings and `loading...`.
+The site uses Regular throughout the interface. Bold is reserved only for the project headline on an individual project-detail page.
 
 ## 2. Preview on your Mac before publishing
 
@@ -107,7 +107,7 @@ For visual/code changes, replace the relevant files in GitHub and commit them. F
 
 ## NEW DESIGN STRUCTURE
 
-The desktop website is intentionally a fixed **550px-wide visual object** centered in the browser.
+The desktop website is intentionally a fixed **800px-wide visual object** centered in the browser.
 
 ### Home
 Home displays only the four projects marked `Show on homepage` in Pages CMS. They appear as four adjacent image crops with **no text and zero gap**. `Homepage position` 1–4 controls the left-to-right order.
@@ -120,7 +120,7 @@ The menu stays directly underneath the content box:
 Work also shows `Display: List / Grid`. The copyright / hidden site-credit trigger remains on the right.
 
 ### Content scrolling
-Work, Project, About and Connect use a contained scrolling area. This is intentional: the 550px site object and its navigation stay visually stable while longer content scrolls inside it.
+Work, Project, About and Connect use a contained scrolling area. This is intentional: the 800px site object and its navigation stay visually stable while longer content scrolls inside it.
 
 ---
 
@@ -164,3 +164,8 @@ python3 tools/build_sitemap.py
 ```
 
 This generates `sitemap.xml` and adds its location to `robots.txt`. Upload / commit both files to GitHub.
+
+
+### Page transitions
+
+Navigation remains visible during page transitions; only the changing page content fades while `loading...` is shown.

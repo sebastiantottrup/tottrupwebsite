@@ -21,7 +21,7 @@
   --line: #d7d7d7;
   --hover: #8d8d8d;
   --soft: #f2f2f2;
-  --site-width: 550px;
+  --site-width: 800px;
   --page-height: 420px;
   --project-height: 500px;
   --home-height: 250px;
@@ -53,6 +53,8 @@ img, video { display: block; max-width: 100%; }
 
 /* ---------------------------------------------------------
    Loading + page transitions
+   The navigation/chrome stays visible at all times. Only the
+   page content fades while the loading label is displayed.
    --------------------------------------------------------- */
 .site-loader {
   position: fixed;
@@ -61,7 +63,7 @@ img, video { display: block; max-width: 100%; }
   display: grid;
   place-items: center;
   pointer-events: none;
-  background: var(--bg);
+  background: transparent;
   opacity: 0;
   visibility: hidden;
   transition: opacity 140ms linear, visibility 0s linear 140ms;
@@ -69,7 +71,7 @@ img, video { display: block; max-width: 100%; }
 .site-loader__label {
   color: var(--muted);
   white-space: nowrap;
-  font-weight: 700;
+  font-weight: 400;
 }
 .loader-dot {
   display: inline-block;
@@ -90,12 +92,12 @@ img, video { display: block; max-width: 100%; }
   flex-direction: column;
   gap: 10px;
 }
-.js .site-shell {
+.js .site-shell > main {
   opacity: 1;
   transition: opacity var(--fade-time) ease;
 }
-.js body[data-page-state="loading"] .site-shell,
-.js body[data-page-state="leaving"] .site-shell { opacity: 0; }
+.js body[data-page-state="loading"] .site-shell > main,
+.js body[data-page-state="leaving"] .site-shell > main { opacity: 0; }
 .js body[data-page-state="loading"] .site-loader,
 .js body[data-page-state="leaving"] .site-loader {
   opacity: 1;
@@ -105,7 +107,7 @@ img, video { display: block; max-width: 100%; }
 .no-js .site-loader { display: none; }
 
 /* ---------------------------------------------------------
-   Fixed 550px content object
+   Fixed 800px content object
    --------------------------------------------------------- */
 .page,
 .work-page {
@@ -124,7 +126,7 @@ img, video { display: block; max-width: 100%; }
 .page::-webkit-scrollbar-thumb,
 .work-page::-webkit-scrollbar-thumb { background: var(--muted); }
 
-.page-title { margin: 0 0 28px; font-size: inherit; font-weight: 700; }
+.page-title { margin: 0 0 28px; font-size: inherit; font-weight: 400; }
 .muted { color: var(--muted); }
 .empty-state { margin: 0; color: var(--muted); }
 
@@ -155,7 +157,7 @@ img, video { display: block; max-width: 100%; }
 .footer-nav a[aria-current="page"],
 .display-switch button.is-active {
   color: var(--text);
-  font-weight: 700;
+  font-weight: 400;
   text-decoration: underline;
   text-decoration-thickness: 1px;
   text-underline-offset: 2px;
@@ -298,7 +300,7 @@ img, video { display: block; max-width: 100%; }
 .work-list__header {
   padding: 0 0 12px;
   color: var(--muted);
-  font-weight: 700;
+  font-weight: 400;
 }
 .work-list__header span {
   text-decoration: underline;
@@ -428,8 +430,8 @@ img, video { display: block; max-width: 100%; }
 .text-page p { margin: 0; }
 .text-page h1,
 .text-page h2 { font-size: inherit; }
-.text-page h1 { font-weight: 700; }
-.text-page h2 { color: var(--muted); font-weight: 700; }
+.text-page h1 { font-weight: 400; }
+.text-page h2 { color: var(--muted); font-weight: 400; }
 .resume-list,
 .connect-list { border-top: 1px solid var(--line); }
 .resume-row,
