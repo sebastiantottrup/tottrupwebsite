@@ -5,6 +5,8 @@ media:
 
 settings:
   hide: true
+  content:
+    merge: true
   commit:
     templates:
       update: "content: update {path}"
@@ -18,6 +20,7 @@ content:
     path: content/projects.json
     format: json
     operations:
+      create: false
       delete: false
     fields:
       - name: projects
@@ -60,36 +63,26 @@ content:
           - name: thumbnailAlt
             label: Thumbnail alt text
             type: string
-            description: "Short visual description for accessibility and image SEO."
-          - name: seoTitle
-            label: SEO title
-            type: string
-            description: "Optional. Leave blank to use Project Title — Site Name."
-          - name: seoDescription
-            label: SEO description
-            type: text
-            description: "Optional 140–160 character search/social description. Falls back to the project description."
-          - name: seoImage
-            label: SEO / social share image
-            type: image
-            description: "Optional. Falls back to the project thumbnail."
+            description: "Describe what is visibly shown in the image. Keep it short and specific. Used for accessibility and image SEO."
           - name: format
             label: Format
             type: string
-            description: "Shown in the Work list, e.g. Images / Video, Product, Design."
+            description: "Shown in the Work list and project headline, e.g. Design + Branding, Product, Images / Video."
           - name: brand
             label: Brand
             type: string
-            description: "Shown in the Work list, e.g. Pas Normal Studios, Polymer Workshop, Personal."
+            description: "Shown in the Work list and project headline, e.g. Pas Normal Studios, Polymer Workshop, Personal."
           - name: client
             label: Client
             type: string
+            description: "Optional client name if different from the Brand."
           - name: role
             label: Role
             type: string
           - name: description
-            label: Description
+            label: Project text
             type: text
+            description: "Long-form project description shown in the scrollable text panel. Use natural language and include relevant project context rather than keyword stuffing."
           - name: media
             label: Project gallery
             type: block
@@ -109,6 +102,7 @@ content:
                   - name: alt
                     label: Alt text
                     type: string
+                    description: "Short description of what is visible in this specific image."
               - name: video
                 label: Video
                 fields:
@@ -122,8 +116,20 @@ content:
                     label: Video poster image
                     type: image
                   - name: alt
-                    label: Label / alt text
+                    label: Label / description
                     type: string
+          - name: seoTitle
+            label: SEO title
+            type: string
+            description: "Optional. Aim for roughly 45–60 characters. Leave blank to use Project Title — Sebastian Tottrup."
+          - name: seoDescription
+            label: SEO description
+            type: text
+            description: "Optional. Aim for roughly 140–160 characters. Describe the project clearly and naturally. Falls back to Project text."
+          - name: seoImage
+            label: SEO / social share image
+            type: image
+            description: "Optional. Prefer a strong landscape image around 1200×630. Falls back to the project thumbnail."
 
   - name: site
     label: Site / About / Connect
@@ -131,6 +137,7 @@ content:
     path: content/site.json
     format: json
     operations:
+      create: false
       delete: false
     fields:
       - name: name
@@ -140,40 +147,57 @@ content:
       - name: siteUrl
         label: Live site URL
         type: string
-        description: "Full public URL, e.g. https://yourname.com. Enables canonical URLs and absolute social-share images."
+        description: "Full public URL including https:// and no page path. Required for canonical URLs, sitemap and absolute social-share images."
       - name: seoTitle
         label: Homepage SEO title
         type: string
-        description: "Recommended: Name — Portfolio or Name — Creative / Cycling / Brand Projects."
+        description: "Recommended length: roughly 45–60 characters."
       - name: seoDescription
         label: Homepage SEO description
         type: text
-        description: "A concise 140–160 character description of the portfolio."
+        description: "Recommended length: roughly 140–160 characters."
       - name: seoImage
         label: Default social share image
         type: image
-        description: "Used by Open Graph / social sharing when a project-specific image is not set."
-      - name: copyrightStartYear
-        label: Copyright start year
-        type: number
-        description: "Footer displays Name © start year–current year. Use the current year for a single year."
-      - name: siteCredit
-        label: Hidden site credit
+        description: "Default Open Graph / social image. Prefer a landscape image around 1200×630."
+      - name: profileImage
+        label: Profile / schema image
+        type: image
+        description: "Optional image used in Person structured data."
+      - name: workSeoTitle
+        label: Work page SEO title
         type: string
-        description: "Easter egg revealed when the footer copyright is clicked."
+      - name: workSeoDescription
+        label: Work page SEO description
+        type: text
+        description: "Recommended length: roughly 140–160 characters."
+      - name: aboutSeoTitle
+        label: About page SEO title
+        type: string
+      - name: aboutSeoDescription
+        label: About page SEO description
+        type: text
+        description: "Recommended length: roughly 140–160 characters."
+      - name: connectSeoTitle
+        label: Connect page SEO title
+        type: string
+      - name: connectSeoDescription
+        label: Connect page SEO description
+        type: text
+        description: "Recommended length: roughly 140–160 characters."
       - name: intro
         label: About intro line
         type: string
       - name: about
         label: Story / background
         type: text
-      - name: aboutSeoDescription
-        label: About page SEO description
-        type: text
-        description: "Short description used by search engines and social previews for the About page."
       - name: location
         label: Location
         type: string
+      - name: jobTitle
+        label: Professional title
+        type: string
+        description: "Optional. Used in Person structured data, e.g. Creative Director / Designer."
       - name: resume
         label: Experience
         type: object
@@ -212,3 +236,11 @@ content:
       - name: websiteLabel
         label: Website display name
         type: string
+      - name: copyrightStartYear
+        label: Copyright start year
+        type: number
+        description: "Footer displays Name © start year–current year."
+      - name: siteCredit
+        label: Hidden site credit
+        type: string
+        description: "Easter egg revealed when the footer copyright is clicked."
