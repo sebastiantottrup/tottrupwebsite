@@ -35,6 +35,7 @@
   overflow: hidden;
   contain: layout paint;
   outline: none;
+  touch-action: pan-y pinch-zoom;
 }
 
 .project-stage.is-clickable {
@@ -214,10 +215,10 @@
   overflow: hidden;
 }
 
-/* Center against the viewport itself, not the portfolio layout.
-   The viewing area is approximately 30% larger than the previous size. */
+/* Center against the viewport itself, not the portfolio layout. */
 .project-lightbox__stage {
   position: fixed;
+  z-index: 1;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
@@ -227,6 +228,7 @@
   min-height: 0;
   overflow: hidden;
   contain: layout paint;
+  touch-action: pan-y pinch-zoom;
 }
 
 .project-lightbox__stage > img,
@@ -250,6 +252,13 @@
 .project-lightbox__stage.is-media-faded > img,
 .project-lightbox__stage.is-media-faded > video {
   opacity: 0;
+}
+
+.project-lightbox__close,
+.project-lightbox__prev,
+.project-lightbox__next,
+.project-lightbox__counter {
+  z-index: 4;
 }
 
 .project-lightbox__close {
@@ -309,9 +318,14 @@ body.is-lightbox-open {
   }
 
   .project-stage {
-    width: min(78vw, 420px);
+    width: min(88vw, 460px);
     justify-self: center;
     aspect-ratio: 1 / 1;
+  }
+
+  .project-gallery-controls button {
+    min-width: 28px;
+    min-height: 28px;
   }
 
   .project-copy-pane {
@@ -325,8 +339,38 @@ body.is-lightbox-open {
     padding-right: 0;
   }
 
+  /* Mobile lightbox uses nearly the complete viewport while preserving
+     enough edge space for large, tappable previous/next controls. */
   .project-lightbox__stage {
-    width: min(90vw, 680px);
-    height: min(62dvh, 680px);
+    top: 50dvh;
+    width: calc(100vw - 28px);
+    height: calc(100dvh - 104px - env(safe-area-inset-top) - env(safe-area-inset-bottom));
+    max-width: none;
+    max-height: none;
+  }
+
+  .project-lightbox__close {
+    top: calc(8px + env(safe-area-inset-top));
+    right: 8px;
+    min-width: 52px;
+    min-height: 44px;
+    padding: 10px !important;
+  }
+
+  .project-lightbox__prev,
+  .project-lightbox__next {
+    top: 50dvh;
+    width: 48px;
+    height: 72px;
+    display: grid;
+    place-items: center;
+    padding: 0 !important;
+  }
+
+  .project-lightbox__prev { left: 0; }
+  .project-lightbox__next { right: 0; }
+
+  .project-lightbox__counter {
+    bottom: calc(14px + env(safe-area-inset-bottom));
   }
 }
