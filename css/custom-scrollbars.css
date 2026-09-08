@@ -1,53 +1,69 @@
-/* Custom portfolio scrollbars — flat grey/white graphic treatment */
+/* Custom portfolio scrollbar — drawn as real page UI rather than native
+   scrollbar styling so it remains visible and consistent in Safari/macOS. */
 
-.work-page,
-.project-copy-scroll {
-  scrollbar-width: auto;
-  scrollbar-color: #7b7b7b #ffffff;
-  scrollbar-gutter: stable;
+.custom-scrollbar-parent {
+  position: relative;
 }
 
-/* Safari / Chrome / Edge */
-.work-page::-webkit-scrollbar,
-.project-copy-scroll::-webkit-scrollbar {
-  width: 12px;
+.custom-scrollbar-target {
+  scrollbar-width: none !important;
+  -ms-overflow-style: none;
 }
 
-.work-page::-webkit-scrollbar-track,
-.project-copy-scroll::-webkit-scrollbar-track {
-  background: #ffffff;
-  border: 1px solid #7b7b7b;
+.custom-scrollbar-target::-webkit-scrollbar {
+  display: none !important;
+  width: 0 !important;
+  height: 0 !important;
+}
+
+/* Leave room for the graphic without crowding the content. */
+.work-page.custom-scrollbar-target {
+  padding-right: 20px;
+}
+
+.project-copy-scroll.custom-scrollbar-target {
+  padding-right: 22px;
+}
+
+.custom-scrollbar {
+  position: absolute;
+  right: 0;
+  width: 13px;
+  min-height: 24px;
+  box-sizing: border-box;
+  border: 1px solid #777;
   border-radius: 0;
+  background: #fff;
+  z-index: 40;
+  user-select: none;
+  touch-action: none;
 }
 
-.work-page::-webkit-scrollbar-thumb,
-.project-copy-scroll::-webkit-scrollbar-thumb {
-  background: #7b7b7b;
-  border: 1px solid #7b7b7b;
-  border-radius: 0;
-  min-height: 42px;
-}
-
-.work-page::-webkit-scrollbar-button,
-.project-copy-scroll::-webkit-scrollbar-button {
+.custom-scrollbar[hidden] {
   display: none;
-  width: 0;
-  height: 0;
 }
 
-.work-page::-webkit-scrollbar-corner,
-.project-copy-scroll::-webkit-scrollbar-corner {
-  background: transparent;
+.custom-scrollbar__thumb {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  min-height: 32px;
+  background: #777;
+  border-radius: 0;
+  cursor: grab;
 }
 
-/* Keep the project copy comfortably separated from the graphic. */
-.project-copy-scroll {
-  padding-right: 12px;
+.custom-scrollbar__thumb:active {
+  cursor: grabbing;
 }
 
 @media (max-width: 700px) {
-  /* Project copy becomes a normal document flow on mobile. */
-  .project-copy-scroll {
+  .project-copy-scroll.custom-scrollbar-target {
     padding-right: 0;
+  }
+
+  .project-copy-pane > .custom-scrollbar {
+    display: none;
   }
 }
