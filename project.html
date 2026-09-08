@@ -18,12 +18,10 @@
   <script>document.documentElement.classList.replace('no-js', 'js');</script>
   <link rel="stylesheet" href="css/styles.css?v=20260908-2">
   <link rel="stylesheet" href="css/project.css?v=20260908-2">
+  <link rel="stylesheet" href="css/fixed-page-height.css?v=20260908-1">
 </head>
 <body data-page-state="loading">
-  <div class="site-loader" aria-live="polite" aria-label="Loading">
-    <span class="site-loader__label">loading<span class="loader-dot">.</span><span class="loader-dot">.</span><span class="loader-dot">.</span></span>
-  </div>
-
+  <div class="site-loader" aria-live="polite" aria-label="Loading"><span class="site-loader__label">loading<span class="loader-dot">.</span><span class="loader-dot">.</span><span class="loader-dot">.</span></span></div>
   <div class="site-shell">
     <main class="page page--project">
       <section class="project-detail" data-project-detail>
@@ -31,29 +29,18 @@
           <div class="project-stage" data-project-stage aria-live="polite"></div>
           <div class="project-gallery-controls" data-project-controls aria-label="Project gallery controls"></div>
         </div>
-
         <article class="project-copy-pane">
           <header class="project-copy-header" data-project-header></header>
-          <div class="project-copy-scroll" tabindex="0" aria-label="Project description">
-            <div class="project-copy-body" data-project-copy></div>
-          </div>
+          <div class="project-copy-scroll" tabindex="0" aria-label="Project description"><div class="project-copy-body" data-project-copy></div></div>
         </article>
       </section>
     </main>
-
     <footer class="site-footer">
-      <nav class="footer-nav" aria-label="Primary">
-        <a href="index.html">Home</a>
-        <a href="work.html" aria-current="page">Work</a>
-        <a href="random.html">Random</a>
-        <a href="about.html">About</a>
-        <a href="connect.html">Connect</a>
-      </nav>
+      <nav class="footer-nav" aria-label="Primary"><a href="index.html">Home</a><a href="work.html" aria-current="page">Work</a><a href="random.html">Random</a><a href="about.html">About</a><a href="connect.html">Connect</a></nav>
       <div></div>
       <div class="footer-copyright" data-copyright>Sebastian Tottrup © 2026</div>
     </footer>
   </div>
-
   <div class="project-lightbox" data-project-lightbox hidden aria-hidden="true" role="dialog" aria-modal="true" aria-label="Full screen project gallery">
     <div class="project-lightbox__inner">
       <button class="project-lightbox__close" type="button" data-lightbox-close aria-label="Close gallery">Close</button>
@@ -63,7 +50,6 @@
       <div class="project-lightbox__counter" data-lightbox-counter></div>
     </div>
   </div>
-
   <script type="module" src="js/project.js?v=20260908-3"></script>
 </body>
 </html>
