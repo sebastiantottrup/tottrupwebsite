@@ -8,10 +8,23 @@ import {
   escapeHtml,
   mediaKind,
   revealPage
-} from './site.js?v=20260908-3';
+} from './site.js?v=20260908-4';
 
-const params = new URLSearchParams(window.location.search);
-const slug = params.get('slug');
+function slugFromLocation() {
+  const querySlug = new URLSearchParams(window.location.search).get('slug');
+  if (querySlug) return querySlug;
+
+  const parts = window.location.pathname.split('/').filter(Boolean);
+  const workIndex = parts.lastIndexOf('work');
+  if (workIndex >= 0 && parts[workIndex + 1]) {
+    try { return decodeURIComponent(parts[workIndex + 1]); }
+    catch (_) { return parts[workIndex + 1]; }
+  }
+
+  return null;
+}
+
+const slug = slugFromLocation();
 const stage = document.querySelector('[data-project-stage]');
 const controls = document.querySelector('[data-project-controls]');
 const header = document.querySelector('[data-project-header]');
@@ -115,7 +128,7 @@ try {
   hydrateSeo(site, {
     title: project.seoTitle || defaultSeoTitle,
     description: project.seoDescription || metaExcerpt(project.description) || `${project.title}, a project by ${site.name || 'Sebastian Tottrup'}.`,
-    path: `project.html?slug=${encodeURIComponent(project.slug)}`,
+    path: `/work/${encodeURIComponent(project.slug)}/`,
     image: project.seoImage || project.thumbnail,
     imageAlt: project.thumbnailAlt || project.title,
     type: 'article'
