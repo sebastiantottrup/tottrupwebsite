@@ -8,7 +8,7 @@ import {
   escapeHtml,
   mediaKind,
   revealPage
-} from './site.js?v=20260908-2';
+} from './site.js?v=20260908-3';
 
 const params = new URLSearchParams(window.location.search);
 const slug = params.get('slug');
@@ -51,6 +51,14 @@ function descriptionParagraphs(value = '') {
     .join('');
 }
 
+function metaExcerpt(value = '', max = 158) {
+  const clean = String(value).replace(/\s+/g, ' ').trim();
+  if (clean.length <= max) return clean;
+  const shortened = clean.slice(0, max - 1);
+  const lastSpace = shortened.lastIndexOf(' ');
+  return `${shortened.slice(0, lastSpace > 90 ? lastSpace : shortened.length).replace(/[.,;:!?\s]+$/, '')}…`;
+}
+
 try {
   if (!stage || !controls || !header || !copy || !lightbox || !lightboxStage || !lightboxCounter || !lightboxClose || !lightboxPrev || !lightboxNext) {
     throw new Error('Project layout could not initialize. Refresh the page to load the latest version.');
@@ -62,11 +70,17 @@ try {
   const project = projects.find(item => item.slug === slug);
   if (!project) throw new Error('Project not found.');
 
+  const brand = project.brand || project.client || '';
+  const defaultSeoTitle = brand
+    ? `${project.title} for ${brand} — ${site.name || 'Sebastian Tottrup'}`
+    : `${project.title} — ${site.name || 'Sebastian Tottrup'}`;
+
   hydrateSeo(site, {
-    title: project.seoTitle || `${project.title} — ${site.name || 'Portfolio'}`,
-    description: project.seoDescription || project.description || `${project.title}, a project by ${site.name || 'the portfolio owner'}.`,
+    title: project.seoTitle || defaultSeoTitle,
+    description: project.seoDescription || metaExcerpt(project.description) || `${project.title}, a project by ${site.name || 'Sebastian Tottrup'}.`,
     path: `project.html?slug=${encodeURIComponent(project.slug)}`,
     image: project.seoImage || project.thumbnail,
+    imageAlt: project.thumbnailAlt || project.title,
     type: 'article'
   });
   hydratePersonSchema(site);
