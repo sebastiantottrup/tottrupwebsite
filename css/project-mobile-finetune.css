@@ -1,0 +1,30 @@
+/* Mobile-only project refinements loaded after the shared mobile stylesheet. */
+
+@media (max-width: 700px) {
+  /* Keep contained landscape imagery vertically and horizontally centered
+     inside the square gallery stage. */
+  .project-stage > img,
+  .project-stage > video {
+    object-position: center center;
+  }
+
+  /* Recover a little more vertical space for the scrollable description
+     without reducing the gallery itself. */
+  .project-detail {
+    gap: 6px;
+  }
+
+  .project-gallery-controls {
+    min-height: 14px;
+    margin-top: 0;
+  }
+
+  .project-gallery-controls button {
+    min-width: 24px;
+    min-height: 20px;
+  }
+
+  .project-copy-pane {
+    gap: 6px;
+  }
+}
