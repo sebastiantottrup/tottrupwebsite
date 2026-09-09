@@ -133,6 +133,23 @@
       ]
     },
     {
+      "slug": "machine-portrait",
+      "year": 2023,
+      "title": "Machine Portrait",
+      "featured": false,
+      "thumbnail": "assets/uploads/dsc09651.jpg",
+      "brand": "Polymer Workshop",
+      "client": "Polymer Workshop",
+      "role": "Creative Director, Photography",
+      "description": "An ongoing portrait series presenting custom-built road and gravel bicycles assembled with Polymer Workshop components. Each build is photographed within a distinct visual setting, selected to create a considered contrast while complementing the overall character and specification of the bicycle.\n\nThe series is intended to demonstrate the breadth of possible configurations and compatibility between Polymer Workshop components and frames from established bicycle manufacturers, while serving as a source of reference and inspiration for individual builds.",
+      "media": [
+        {
+          "type": "image",
+          "src": "assets/uploads/dsc09651.jpg"
+        }
+      ]
+    },
+    {
       "slug": "project-05",
       "year": 2024,
       "title": "Road Assistance ´24",
