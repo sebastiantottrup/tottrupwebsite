@@ -284,6 +284,7 @@ export function hydratePersonSchema(site) {
   if (site.instagram) sameAs.push(`https://instagram.com/${String(site.instagram).replace(/^@/, '')}`);
   if (site.strava) sameAs.push(site.strava);
   if (site.linkedin) sameAs.push(site.linkedin);
+  if (site.youtube) sameAs.push(site.youtube);
   if (site.website) sameAs.push(site.website);
 
   const profileImage = absoluteUrl(site, site.profileImage || '');
