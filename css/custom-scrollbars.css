@@ -18,7 +18,8 @@
 }
 
 /* Leave room for the graphic without crowding the content. */
-.work-page.custom-scrollbar-target {
+.work-page.custom-scrollbar-target,
+.text-page.custom-scrollbar-target {
   padding-right: 20px;
 }
 
@@ -71,12 +72,13 @@
   }
 
   .work-page.custom-scrollbar-target,
-  .page--project.custom-scrollbar-target {
+  .page--project.custom-scrollbar-target,
+  .text-page.custom-scrollbar-target {
     padding-right: 12px;
   }
 
-  /* Mobile project pages use the page-level scrollbar rather than a second
-     nested scrollbar inside the project description. */
+  /* Mobile project pages use the paragraph-level scrollbar controlled by
+     the later mobile project rules. */
   .project-copy-scroll.custom-scrollbar-target {
     padding-right: 0;
   }
