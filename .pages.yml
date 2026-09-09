@@ -259,6 +259,14 @@ content:
       - name: linkedinLabel
         label: LinkedIn display name
         type: string
+      - name: youtube
+        label: YouTube URL
+        type: string
+        description: "Full URL to your YouTube channel or profile."
+      - name: youtubeLabel
+        label: YouTube display name
+        type: string
+        description: "Optional display name shown on the Connect page."
       - name: website
         label: Website URL
         type: string
