@@ -107,6 +107,22 @@
     overflow-x: hidden;
   }
 
+  /* Project pages use one page-level scroll area on mobile. This keeps the
+     gallery, copy and metadata together while allowing the same custom
+     scrollbar skin used on Work to remain visible beside the content. */
+  .page--project {
+    width: 100%;
+    height: calc(100dvh - 132px - env(safe-area-inset-bottom));
+    max-height: calc(100dvh - 132px - env(safe-area-inset-bottom));
+    min-height: 320px;
+    overflow-y: auto;
+    overflow-x: hidden;
+  }
+
+  .project-detail {
+    padding-bottom: 18px;
+  }
+
   .work-list-wrap {
     width: 100%;
     overflow-x: hidden;
