@@ -28,12 +28,10 @@
     overflow: auto;
   }
 
-  /* Desktop centers the complete site with CSS Grid. On iOS Safari that
-     combines badly with dvh/svh while the browser chrome is visible and can
-     vertically center the Project shell, producing the large blank area seen
-     above the gallery. Project pages are instead anchored directly to the
-     top of the dynamic viewport. */
-  body.project-page-body {
+  /* Project and About pages use the whole dynamic mobile viewport rather
+     than inheriting the desktop vertically-centered shell. */
+  body.project-page-body,
+  body.about-page-body {
     display: block;
     place-items: initial;
     min-height: 100dvh;
@@ -150,6 +148,33 @@
     min-height: 320px;
     overflow-y: auto;
     overflow-x: hidden;
+  }
+
+  /* About now uses the full available content area from the shared top inset
+     down to the compact footer. It scrolls only when its content actually
+     exceeds that space; the custom scrollbar script hides the graphic when
+     no overflow exists. */
+  body.about-page-body .text-page {
+    position: fixed;
+    top: var(--mobile-page-padding);
+    left: var(--mobile-page-padding);
+    right: var(--mobile-page-padding);
+    bottom: calc(var(--mobile-standard-footer-height) + env(safe-area-inset-bottom));
+    width: auto;
+    height: auto;
+    max-height: none;
+    min-height: 0;
+    overflow-y: auto;
+    overflow-x: hidden;
+    padding-top: 0;
+    padding-bottom: 2px;
+    margin: 0;
+    -webkit-overflow-scrolling: touch;
+    overscroll-behavior: contain;
+  }
+
+  body.about-page-body .text-page.custom-scrollbar-target {
+    padding-right: 12px;
   }
 
   /* Project pages are pinned between the shared 10px top edge and the exact
