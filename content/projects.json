@@ -42,12 +42,12 @@
       ]
     },
     {
-      "slug": "project-02",
+      "slug": "the-lemma-project",
       "year": 2024,
       "title": "The Lemma Project",
       "featured": true,
       "featuredOrder": 2,
-      "thumbnail": "assets/uploads/dsc00801.jpg",
+      "thumbnail": "assets/uploads/polymerworkshopthelemmaproject27.jpg",
       "thumbnailAlt": "Project Two",
       "format": "Product",
       "brand": "Polymer Workshop",
@@ -57,8 +57,28 @@
       "media": [
         {
           "type": "image",
-          "src": "assets/uploads/bibs-imagesamplefont.png",
-          "alt": "Project Two"
+          "src": "assets/uploads/polymerworkshopthelemmaproject27.jpg",
+          "alt": "Officine Mattio Lemma RT"
+        },
+        {
+          "type": "image",
+          "src": "assets/uploads/polymerworkshopthelemmaproject8.jpg"
+        },
+        {
+          "type": "image",
+          "src": "assets/uploads/polymerworkshopthelemmaproject13.jpg"
+        },
+        {
+          "type": "image",
+          "src": "assets/uploads/polymerworkshopthelemmaproject11.jpg"
+        },
+        {
+          "type": "image",
+          "src": "assets/uploads/polymerworkshopthelemmaproject15.jpg"
+        },
+        {
+          "type": "image",
+          "src": "assets/uploads/polymerworkshopthelemmaproject10.jpg"
         }
       ]
     },
@@ -240,6 +260,24 @@
       "brand": "Personal",
       "client": "Sebastian Tottrup",
       "role": "Creative Direction, Brand Design, Product Design"
+    },
+    {
+      "slug": "cent-cols-branding",
+      "year": 2022,
+      "title": "Cent Cols Rebranding",
+      "featured": false,
+      "thumbnail": "assets/uploads/polymerworkshopi99pani99ai99ri99aci99er-02.jpg",
+      "format": "Brand Development",
+      "brand": "Cent Cols",
+      "client": "Cent Cols",
+      "role": "Creative Director"
+    },
+    {
+      "slug": "cent-cols-brand",
+      "year": 2023,
+      "title": "Cent Cols Challenge",
+      "featured": false,
+      "thumbnail": "assets/uploads/polymerworkshopi99pani99ai99ri99aci99er-10.jpg"
     }
   ]
 }
