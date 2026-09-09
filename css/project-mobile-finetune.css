@@ -1,15 +1,23 @@
 /* Mobile-only project refinements loaded after the shared mobile stylesheet. */
 
 @media (max-width: 700px) {
-  /* Keep contained landscape imagery vertically and horizontally centered
-     inside the square gallery stage. */
+  /* Keep contained imagery vertically and horizontally centered inside the
+     square gallery stage. */
   .project-stage > img,
   .project-stage > video {
     object-position: center center;
   }
 
-  /* Recover a little more vertical space for the scrollable description
-     without reducing the gallery itself. */
+  /* Reduce the mobile gallery box by 15%. Because the stage stays square,
+     this also gives the fixed heading + scrollable description noticeably
+     more vertical room without changing the overall project-page height. */
+  .project-stage {
+    width: 85%;
+    justify-self: center;
+  }
+
+  /* Keep the surrounding controls compact so the recovered space belongs to
+     the paragraph rather than being reintroduced as gallery spacing. */
   .project-detail {
     gap: 6px;
   }
