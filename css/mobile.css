@@ -140,22 +140,39 @@
     overflow-x: hidden;
   }
 
-  /* Project pages use one page-level scroll area on mobile. This keeps the
-     gallery, copy and metadata together while allowing the same custom
-     scrollbar skin used on Work to remain visible beside the content. */
+  /* Project mobile layout: gallery and project heading stay fixed while only
+     the description / metadata area scrolls. The gallery starts at the first
+     available content pixel with no internal top offset. */
   .page--project {
     width: 100%;
     height: calc(100dvh - 56px - env(safe-area-inset-bottom));
     max-height: calc(100dvh - 56px - env(safe-area-inset-bottom));
     min-height: 320px;
-    overflow-y: auto;
-    overflow-x: hidden;
+    overflow: hidden;
+    padding-right: 0;
+  }
+
+  .page--project.custom-scrollbar-target {
+    padding-right: 0;
   }
 
   .project-detail {
-    padding-left: 0;
-    padding-right: 0;
-    padding-bottom: var(--mobile-page-padding);
+    width: 100%;
+    height: 100%;
+    min-height: 0;
+    grid-template-columns: 1fr;
+    grid-template-rows: auto minmax(0, 1fr);
+    gap: 10px;
+    align-items: stretch;
+    padding: 0;
+    overflow: hidden;
+  }
+
+  .project-gallery-pane {
+    min-height: 0;
+    grid-template-rows: auto auto;
+    gap: 0;
+    align-content: start;
   }
 
   /* Align the project gallery itself to the shared mobile content edge rather
@@ -163,6 +180,50 @@
   .project-stage {
     width: 100%;
     max-width: none;
+    justify-self: stretch;
+    aspect-ratio: 1 / 1;
+  }
+
+  .project-gallery-controls {
+    margin-top: 4px;
+  }
+
+  .project-copy-pane {
+    min-height: 0;
+    height: 100%;
+    display: grid;
+    grid-template-rows: auto minmax(0, 1fr);
+    gap: 10px;
+    overflow: hidden;
+  }
+
+  .project-copy-header {
+    min-height: 0;
+  }
+
+  .project-copy-scroll {
+    min-height: 0;
+    height: 100%;
+    overflow-y: auto;
+    overflow-x: hidden;
+    padding-right: 12px;
+    -webkit-overflow-scrolling: touch;
+    overscroll-behavior: contain;
+  }
+
+  /* On project pages the custom mobile scrollbar belongs to the paragraph
+     area, not to the complete page. */
+  .project-copy-scroll.custom-scrollbar-target {
+    padding-right: 12px;
+  }
+
+  .project-copy-pane > .custom-scrollbar {
+    display: block;
+    width: 9px;
+  }
+
+  .project-copy-body {
+    padding-bottom: var(--mobile-page-padding);
   }
 
   .work-list-wrap {
