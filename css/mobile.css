@@ -4,6 +4,7 @@
   :root {
     --mobile-page-padding: 10px;
     --mobile-footer-clearance: 44px;
+    --mobile-standard-footer-height: 41px;
   }
 
   /* Keep normal scrolling and pinch-to-zoom, but disable Safari/Chrome's
@@ -151,19 +152,23 @@
     overflow-x: hidden;
   }
 
-  /* Project pages now use the complete available mobile viewport from the
-     shared 10px top edge down to the compact fixed footer. This both moves
-     the gallery to the top and lets the paragraph scroll area finish directly
-     above the menu instead of leaving a large unused white zone. */
-  .page--project {
-    width: 100%;
-    height: calc(100dvh - var(--mobile-page-padding) - var(--mobile-footer-clearance) - env(safe-area-inset-bottom));
-    max-height: calc(100dvh - var(--mobile-page-padding) - var(--mobile-footer-clearance) - env(safe-area-inset-bottom));
-    min-height: 320px;
+  /* Project pages are pinned between the shared 10px top edge and the exact
+     top edge of the compact footer. Using top/bottom anchors instead of a
+     calculated height prevents iOS Safari viewport rounding from leaving an
+     unused band below the paragraph area. */
+  body.project-page-body .page--project {
+    position: fixed;
+    top: var(--mobile-page-padding);
+    left: var(--mobile-page-padding);
+    right: var(--mobile-page-padding);
+    bottom: calc(var(--mobile-standard-footer-height) + env(safe-area-inset-bottom));
+    width: auto;
+    height: auto;
+    max-height: none;
+    min-height: 0;
     overflow: hidden;
-    padding-top: 0;
-    padding-right: 0;
-    margin-top: 0;
+    padding: 0;
+    margin: 0;
   }
 
   .page--project.custom-scrollbar-target {
@@ -210,9 +215,12 @@
     margin-top: 4px;
   }
 
+  /* The heading stays fixed while this second grid row consumes every pixel
+     remaining above the footer. Only its paragraph section scrolls. */
   .project-copy-pane {
     min-height: 0;
-    height: 100%;
+    height: auto;
+    align-self: stretch;
     display: grid;
     grid-template-rows: auto minmax(0, 1fr);
     gap: 10px;
@@ -225,7 +233,8 @@
 
   .project-copy-scroll {
     min-height: 0;
-    height: 100%;
+    height: auto;
+    align-self: stretch;
     overflow-y: auto;
     overflow-x: hidden;
     padding-right: 12px;
