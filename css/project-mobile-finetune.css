@@ -35,4 +35,12 @@
   .project-copy-pane {
     gap: 6px;
   }
+
+  /* The custom scrollbar script sets the hidden attribute whenever the copy
+     fits inside its viewport. This final override must preserve that state,
+     because the shared mobile stylesheet otherwise forces the graphic to
+     display on project pages. */
+  .project-copy-pane > .custom-scrollbar[hidden] {
+    display: none;
+  }
 }
