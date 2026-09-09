@@ -2,6 +2,7 @@
 
 @media (max-width: 700px) {
   :root {
+    --mobile-page-padding: 10px;
     --mobile-footer-clearance: 44px;
   }
 
@@ -16,15 +17,35 @@
     touch-action: manipulation;
   }
 
+  /* One shared outer inset is used across Home, Work, Project, About,
+     Connect and Random so every page lines up to the same mobile grid. */
   body {
-    padding: 14px 10px calc(var(--mobile-footer-clearance) + env(safe-area-inset-bottom));
+    padding:
+      var(--mobile-page-padding)
+      var(--mobile-page-padding)
+      calc(var(--mobile-footer-clearance) + env(safe-area-inset-bottom));
     overflow: auto;
   }
 
   .site-shell {
-    width: min(var(--site-width), calc(100vw - 20px));
+    width: min(var(--site-width), calc(100vw - (var(--mobile-page-padding) * 2)));
     margin: 0 auto;
     gap: 0;
+  }
+
+  .page,
+  .work-page,
+  .page--project,
+  .text-page {
+    margin-left: 0;
+    margin-right: 0;
+  }
+
+  /* Remove the desktop text-page inset so About and Connect align with the
+     same outer edge as every other mobile page. */
+  .text-page {
+    padding-left: 0;
+    padding-right: 0;
   }
 
   /* Keep project swipe areas dedicated to horizontal gallery gestures while
@@ -57,7 +78,7 @@
     align-content: center;
     gap: 0;
     row-gap: 2px;
-    padding: 4px 10px calc(4px + env(safe-area-inset-bottom));
+    padding: 4px var(--mobile-page-padding) calc(4px + env(safe-area-inset-bottom));
     background: var(--bg);
     transform: none !important;
     transition: none !important;
@@ -105,8 +126,8 @@
      footer while still ending the custom scroll area just above the chrome. */
   .work-page {
     width: 100%;
-    height: calc(100dvh - 76px - env(safe-area-inset-bottom));
-    max-height: calc(100dvh - 76px - env(safe-area-inset-bottom));
+    height: calc(100dvh - 72px - env(safe-area-inset-bottom));
+    max-height: calc(100dvh - 72px - env(safe-area-inset-bottom));
     min-height: 320px;
     overflow-y: auto;
     overflow-x: hidden;
@@ -117,21 +138,30 @@
      scrollbar skin used on Work to remain visible beside the content. */
   .page--project {
     width: 100%;
-    height: calc(100dvh - 60px - env(safe-area-inset-bottom));
-    max-height: calc(100dvh - 60px - env(safe-area-inset-bottom));
+    height: calc(100dvh - 56px - env(safe-area-inset-bottom));
+    max-height: calc(100dvh - 56px - env(safe-area-inset-bottom));
     min-height: 320px;
     overflow-y: auto;
     overflow-x: hidden;
   }
 
   .project-detail {
-    padding-bottom: 12px;
+    padding-left: 0;
+    padding-right: 0;
+    padding-bottom: var(--mobile-page-padding);
+  }
+
+  /* Align the project gallery itself to the shared mobile content edge rather
+     than giving it a second, page-specific inset. */
+  .project-stage {
+    width: 100%;
+    max-width: none;
   }
 
   .work-list-wrap {
     width: 100%;
     overflow-x: hidden;
-    padding-bottom: 8px;
+    padding-bottom: var(--mobile-page-padding);
   }
 
   .work-list {
@@ -195,7 +225,7 @@
   /* Mobile Grid is always two columns, matching the supplied reference. */
   .work-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 20px 10px;
+    gap: 20px var(--mobile-page-padding);
   }
 
   .work-grid-card__media {
@@ -219,7 +249,7 @@
     top: auto !important;
     bottom: calc(100% + 8px) !important;
     transform: translateX(50%);
-    max-width: calc(100vw - 32px);
+    max-width: calc(100vw - (var(--mobile-page-padding) * 2));
     text-align: center;
   }
 }
