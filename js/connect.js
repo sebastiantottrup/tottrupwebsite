@@ -27,6 +27,7 @@ try {
   }
   if (site.strava) links.push({ label: 'Strava', value: site.stravaLabel || 'Profile', href: normalUrl(site.strava), external: true });
   if (site.linkedin) links.push({ label: 'LinkedIn', value: site.linkedinLabel || 'Profile', href: normalUrl(site.linkedin), external: true });
+  if (site.youtube) links.push({ label: 'YouTube', value: site.youtubeLabel || 'Channel', href: normalUrl(site.youtube), external: true });
   if (site.website) links.push({ label: 'Website', value: site.websiteLabel || site.website, href: normalUrl(site.website), external: true });
 
   page.innerHTML = `
