@@ -1,5 +1,5 @@
 (() => {
-  const SELECTOR = '.work-page, .project-copy-scroll';
+  const SELECTOR = '.work-page, .page--project, .project-copy-scroll';
   const MIN_THUMB = 32;
 
   function initCustomScrollbar(target) {
@@ -33,8 +33,9 @@
       const viewport = target.clientHeight;
       const content = target.scrollHeight;
       const maxScroll = Math.max(0, content - viewport);
+      const minimumThumb = window.matchMedia('(max-width: 700px)').matches ? 28 : MIN_THUMB;
       const thumbHeight = maxScroll > 0
-        ? Math.max(MIN_THUMB, Math.min(viewport, Math.round((viewport / content) * viewport)))
+        ? Math.max(minimumThumb, Math.min(viewport, Math.round((viewport / content) * viewport)))
         : viewport;
       const maxThumbTravel = Math.max(0, viewport - thumbHeight);
       return { viewport, content, maxScroll, thumbHeight, maxThumbTravel };
@@ -108,7 +109,7 @@
     }
 
     const mutationObserver = new MutationObserver(() => requestAnimationFrame(update));
-    mutationObserver.observe(target, { childList: true, subtree: true, characterData: true });
+    mutationObserver.observe(target, { childList: true, subtree: true, characterData: true, attributes: true });
 
     window.addEventListener('resize', update, { passive: true });
     requestAnimationFrame(update);
