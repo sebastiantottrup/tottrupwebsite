@@ -27,6 +27,18 @@
     overflow: auto;
   }
 
+  /* Desktop centers the complete site with CSS Grid. On iOS Safari that
+     combines badly with dvh/svh while the browser chrome is visible and can
+     vertically center the Project shell, producing the large blank area seen
+     above the gallery. Project pages are instead anchored directly to the
+     top of the dynamic viewport. */
+  body.project-page-body {
+    display: block;
+    place-items: initial;
+    min-height: 100dvh;
+    overflow: hidden;
+  }
+
   .site-shell {
     width: min(var(--site-width), calc(100vw - (var(--mobile-page-padding) * 2)));
     margin: 0 auto;
@@ -129,28 +141,29 @@
     margin: 0;
   }
 
-  /* Work and Project use the exact same mobile content height. This keeps
-     their top edge at the same vertical position inside the centered shell. */
-  .work-page,
-  .page--project {
+  /* Keep the Work page exactly as established. */
+  .work-page {
     width: 100%;
     height: calc(100dvh - 72px - env(safe-area-inset-bottom));
     max-height: calc(100dvh - 72px - env(safe-area-inset-bottom));
     min-height: 320px;
-  }
-
-  .work-page {
     overflow-y: auto;
     overflow-x: hidden;
   }
 
-  /* Project mobile layout: gallery and project heading stay fixed while only
-     the description / metadata area scrolls. The gallery starts flush at the
-     same top edge as the Work page with no internal offset. */
+  /* Project pages now use the complete available mobile viewport from the
+     shared 10px top edge down to the compact fixed footer. This both moves
+     the gallery to the top and lets the paragraph scroll area finish directly
+     above the menu instead of leaving a large unused white zone. */
   .page--project {
+    width: 100%;
+    height: calc(100dvh - var(--mobile-page-padding) - var(--mobile-footer-clearance) - env(safe-area-inset-bottom));
+    max-height: calc(100dvh - var(--mobile-page-padding) - var(--mobile-footer-clearance) - env(safe-area-inset-bottom));
+    min-height: 320px;
     overflow: hidden;
     padding-top: 0;
     padding-right: 0;
+    margin-top: 0;
   }
 
   .page--project.custom-scrollbar-target {
@@ -177,6 +190,7 @@
     grid-template-rows: auto auto;
     gap: 0;
     align-content: start;
+    align-self: start;
     margin: 0;
     padding: 0;
   }
@@ -187,6 +201,7 @@
     width: 100%;
     max-width: none;
     justify-self: stretch;
+    align-self: start;
     aspect-ratio: 1 / 1;
     margin: 0;
   }
@@ -230,7 +245,7 @@
   }
 
   .project-copy-body {
-    padding-bottom: var(--mobile-page-padding);
+    padding-bottom: 2px;
   }
 
   .work-list-wrap {
