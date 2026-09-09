@@ -77,7 +77,7 @@
     align-items: center;
     align-content: center;
     gap: 0;
-    row-gap: 2px;
+    row-gap: 3px;
     padding: 4px var(--mobile-page-padding) calc(4px + env(safe-area-inset-bottom));
     background: var(--bg);
     transform: none !important;
@@ -85,14 +85,21 @@
     isolation: isolate;
   }
 
-  /* Work keeps the display selector above the menu, but with the same tight
-     footer treatment. */
+  /* Root page templates contain a desktop spacer element between navigation
+     and copyright. Hide it on mobile so it cannot create an implicit blank
+     grid row. Work has a real Display control in this position, so it is not
+     affected. */
+  .site-footer:not(.site-footer--work) > div:empty {
+    display: none;
+  }
+
+  /* Work keeps the display selector above the menu, using the same padding
+     and row spacing as the rest of the site. */
   .site-footer--work {
     grid-template-areas:
       "display"
       "nav"
       "copyright";
-    row-gap: 3px;
   }
 
   body[data-menu-sliding="true"] .site-footer {
