@@ -1,4 +1,4 @@
-import { loadSite, hydrateChrome, hydrateSeo, hydratePersonSchema, escapeHtml, revealPage } from './site.js?v=20260908-4';
+import { loadSite, hydrateChrome, hydrateSeo, hydratePersonSchema, escapeHtml, revealPage } from './site.js?v=20260909-1';
 
 const page = document.querySelector('[data-connect]');
 
