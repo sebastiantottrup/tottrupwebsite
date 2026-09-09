@@ -1,5 +1,5 @@
 (() => {
-  const SELECTOR = '.work-page, .page--project, .project-copy-scroll';
+  const SELECTOR = '.work-page, .page--project, .project-copy-scroll, [data-about]';
   const MIN_THUMB = 32;
 
   function initCustomScrollbar(target) {
@@ -50,8 +50,6 @@
       track.hidden = maxScroll <= 1 || viewport <= 0;
       if (track.hidden) return;
 
-      /* Safari can briefly report negative / beyond-max scrollTop while
-         rubber-banding. Clamp the visual thumb so it never leaves the track. */
       const safeScrollTop = clamp(target.scrollTop, 0, maxScroll);
       const ratio = maxScroll ? safeScrollTop / maxScroll : 0;
       const thumbTop = clamp(Math.round(ratio * maxThumbTravel), 0, maxThumbTravel);
