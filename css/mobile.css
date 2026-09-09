@@ -129,30 +129,32 @@
     margin: 0;
   }
 
-  /* Recover the viewport space that was previously reserved for an oversized
-     footer while still ending the custom scroll area just above the chrome. */
-  .work-page {
+  /* Work and Project use the exact same mobile content height. This keeps
+     their top edge at the same vertical position inside the centered shell. */
+  .work-page,
+  .page--project {
     width: 100%;
     height: calc(100dvh - 72px - env(safe-area-inset-bottom));
     max-height: calc(100dvh - 72px - env(safe-area-inset-bottom));
     min-height: 320px;
+  }
+
+  .work-page {
     overflow-y: auto;
     overflow-x: hidden;
   }
 
   /* Project mobile layout: gallery and project heading stay fixed while only
-     the description / metadata area scrolls. The gallery starts at the first
-     available content pixel with no internal top offset. */
+     the description / metadata area scrolls. The gallery starts flush at the
+     same top edge as the Work page with no internal offset. */
   .page--project {
-    width: 100%;
-    height: calc(100dvh - 56px - env(safe-area-inset-bottom));
-    max-height: calc(100dvh - 56px - env(safe-area-inset-bottom));
-    min-height: 320px;
     overflow: hidden;
+    padding-top: 0;
     padding-right: 0;
   }
 
   .page--project.custom-scrollbar-target {
+    padding-top: 0;
     padding-right: 0;
   }
 
@@ -164,7 +166,9 @@
     grid-template-rows: auto minmax(0, 1fr);
     gap: 10px;
     align-items: stretch;
+    align-content: start;
     padding: 0;
+    margin: 0;
     overflow: hidden;
   }
 
@@ -173,6 +177,8 @@
     grid-template-rows: auto auto;
     gap: 0;
     align-content: start;
+    margin: 0;
+    padding: 0;
   }
 
   /* Align the project gallery itself to the shared mobile content edge rather
@@ -182,6 +188,7 @@
     max-width: none;
     justify-self: stretch;
     aspect-ratio: 1 / 1;
+    margin: 0;
   }
 
   .project-gallery-controls {
